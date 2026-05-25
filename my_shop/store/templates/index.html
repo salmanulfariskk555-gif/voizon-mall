@@ -1,0 +1,230 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOIZON MALL | Global Shopping Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; color: #0f172a; }
+
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #eff6ff, #ffffff);
+        }
+
+        .category-pill:hover {
+            background-color: #000;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+        }
+
+        /* --- NEW: SCROLLING BOARD ANIMATION --- */
+        .marquee-container {
+            overflow: hidden;
+            background: #f8fafc;
+            padding: 15px 0;
+            white-space: nowrap;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll-left 30s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .scroll-item {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 40px;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-black text-white text-[10px] py-2 text-center font-bold tracking-[0.2em] uppercase">
+    Complimentary Worldwide Shipping on Orders Over ₹5000
+</div>
+
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <a href="/" class="text-2xl font-black tracking-tighter">
+            VOIZON<span class="text-blue-600 ml-0.5">.</span>
+        </a>
+
+        <div class="hidden lg:flex items-center space-x-10 text-[13px] font-bold uppercase tracking-widest text-slate-600">
+            <a href="#" class="hover:text-blue-600 transition-colors">New Arrivals</a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Electronics</a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Fashion</a>
+            <a href="#" class="hover:text-blue-600 transition-colors">Lifestyle</a>
+            <a href="{% url 'about' %}" class="hover:text-blue-600 transition-colors">Our Story</a>
+        </div>
+
+        <div class="flex items-center space-x-5">
+            <div class="hidden md:block relative">
+                <input type="text" placeholder="Search product..." class="bg-gray-100 px-4 py-2 rounded-full text-sm outline-none focus:ring-1 focus:ring-blue-400 w-48">
+            </div>
+            <a href="{% url 'login' %}" class="text-slate-700 hover:text-blue-600 transition-all"><i class="fa-regular fa-user text-xl"></i></a>
+            <a href="{% url 'cart_view' %}" class="relative p-2 text-slate-700">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+                <span class="absolute top-0 right-0 bg-blue-600 text-white text-[9px] w-4 h-4 flex items-center justify-center rounded-full font-bold">{{ cart_items_count }}</span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-gradient py-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h2 class="text-sm font-bold text-blue-600 uppercase tracking-[0.3em] mb-4">Established 2026</h2>
+            <h1 class="text-6xl md:text-8xl font-black text-slate-900 leading-[0.9] mb-8">
+                Elevated <br> <span class="text-blue-600">Everyday.</span>
+            </h1>
+            <p class="text-lg text-slate-500 max-w-md mb-10 leading-relaxed">
+                Discover the curated collection of world-class brands at Voizon Mall. Quality meets convenience.
+            </p>
+            <div class="flex space-x-4">
+                <a href="#shop" class="bg-black text-white px-10 py-4 rounded-full font-bold hover:bg-slate-800 transition-all shadow-xl">Explore Collections</a>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="w-full h-[500px] bg-slate-100 rounded-[3rem] overflow-hidden shadow-2xl">
+                 <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover opacity-90" alt="Shopping">
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="marquee-container">
+    <div class="marquee-content">
+        {% for product in products %}
+        <div class="scroll-item">
+            <span class="text-blue-600 mr-2">✦</span> {{ product.name }}
+        </div>
+        {% endfor %}
+        {% for product in products %}
+        <div class="scroll-item">
+            <span class="text-blue-600 mr-2">✦</span> {{ product.name }}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<section class="py-10 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-4">
+        <div class="category-pill border border-gray-200 px-6 py-2 rounded-full cursor-pointer transition-all font-bold text-xs uppercase tracking-wider">All Products</div>
+        <div class="category-pill border border-gray-200 px-6 py-2 rounded-full cursor-pointer transition-all font-bold text-xs uppercase tracking-wider">Tech & Gadgets</div>
+        <div class="category-pill border border-gray-200 px-6 py-2 rounded-full cursor-pointer transition-all font-bold text-xs uppercase tracking-wider">Apparels</div>
+        <div class="category-pill border border-gray-200 px-6 py-2 rounded-full cursor-pointer transition-all font-bold text-xs uppercase tracking-wider">Health & Care</div>
+        <div class="category-pill border border-gray-200 px-6 py-2 rounded-full cursor-pointer transition-all font-bold text-xs uppercase tracking-wider">Home Decor</div>
+    </div>
+</section>
+
+<section id="shop" class="py-20 max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+            <h3 class="text-3xl font-black text-slate-900 mb-2">Featured Products</h3>
+            <div class="h-1 w-20 bg-blue-600 rounded-full"></div>
+        </div>
+        <p class="text-slate-400 font-medium text-sm mt-4 md:mt-0">Showing {{ products.count }} handpicked items</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {% for product in products %}
+        <div class="product-card bg-white flex flex-col group">
+            <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-gray-100 mb-6">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover transition-transform duration-700">
+                {% else %}
+                    <div class="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
+                        <i class="fa-solid fa-box-open text-4xl"></i>
+                    </div>
+                {% endif %}
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <a href="{% url 'add_to_cart' product.id %}" class="bg-white text-black px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-widest transform translate-y-4 group-hover:translate-y-0 transition-transform">Quick Add</a>
+                </div>
+            </div>
+
+            <div class="px-2">
+                <div class="flex justify-between items-start mb-1">
+                    <h4 class="font-bold text-lg text-slate-800 leading-tight">{{ product.name }}</h4>
+                </div>
+                <p class="text-slate-400 text-xs mb-3 font-medium uppercase tracking-tighter">{{ product.category|default:"Global Collection" }}</p>
+                <div class="flex items-center justify-between border-t border-gray-50 pt-4">
+                    <span class="text-xl font-black text-slate-900">₹{{ product.price }}</span>
+                    <a href="{% url 'product_detail' product.slug %}" class="text-blue-600 font-bold text-xs uppercase tracking-widest hover:text-blue-800 transition-colors">Details →</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<footer class="bg-slate-950 text-white pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-16">
+        <div class="col-span-2">
+            <h2 class="text-3xl font-black italic mb-6">VOIZON<span class="text-blue-500">.</span></h2>
+            <p class="text-slate-400 max-w-sm leading-relaxed">
+                Your one-stop destination for premium products. Experience quality, speed, and excellence in every click.
+            </p>
+        </div>
+        <div>
+            <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Support</h4>
+            <ul class="text-slate-400 space-y-4 text-sm">
+                <li><a href="#" class="hover:text-white transition-colors">Shipping Policy</a></li>
+                <li><a href="#" class="hover:text-blue-400 transition-colors">Terms & Conditions</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Contact Support</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Company</h4>
+            <ul class="text-slate-400 space-y-4 text-sm">
+                <li><a href="{% url 'about' %}" class="hover:text-white transition-colors">Our Story</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Voizon Digital</a></li>
+                <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-6 pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-slate-500 text-xs">© 2026 Voizon Mall. Designed for the future.</p>
+        <div class="flex space-x-6 text-slate-400">
+            <i class="fa-brands fa-cc-visa text-2xl"></i>
+            <i class="fa-brands fa-cc-mastercard text-2xl"></i>
+            <i class="fa-brands fa-stripe text-2xl"></i>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

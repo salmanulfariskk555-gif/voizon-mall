@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-100 flex items-center justify-center p-4 sm:p-0">
+    <!-- Main Container -->
+    <div class="flex flex-col md:flex-row w-full max-w-[850px] min-h-[500px] bg-white rounded-sm shadow-lg overflow-hidden">
+
+        <!-- Left Side: Flipkart Branding (Blue Section) -->
+        <div class="hidden md:flex flex-col justify-between w-2/5 bg-[#2874f0] p-10 text-white">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Look like you're new here!</h2>
+                <p class="text-lg text-blue-100 leading-relaxed">Sign up with your mobile number to get started</p>
+            </div>
+            <!-- Bottom Graphic Image Placeholder -->
+            <div class="opacity-50">
+                <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png" alt="login-graphic">
+            </div>
+        </div>
+
+        <!-- Mobile Header (Only visible on Mobile) -->
+        <div class="md:hidden bg-[#2874f0] p-6 text-white text-center">
+            <h2 class="text-xl font-bold">Sign Up</h2>
+            <p class="text-xs text-blue-100 mt-1">Create an account to continue</p>
+        </div>
+
+        <!-- Right Side: Signup Form -->
+        <div class="flex-1 p-6 md:p-12">
+            <form method="POST" class="space-y-6">
+                {% csrf_token %}
+
+                {% for field in form %}
+                <div class="relative group">
+                    <input type="{{ field.field.widget.input_type }}"
+                           name="{{ field.name }}"
+                           id="{{ field.id_for_label }}"
+                           required
+                           class="peer w-full border-b-2 border-gray-300 py-2 focus:outline-none focus:border-[#2874f0] transition-colors placeholder-transparent">
+
+                    <label for="{{ field.id_for_label }}"
+                           class="absolute left-0 -top-3.5 text-gray-500 text-sm transition-all
+                                  peer-placeholder-shown:text-base peer-placeholder-shown:top-2
+                                  peer-focus:-top-3.5 peer-focus:text-[#2874f0] peer-focus:text-sm">
+                        {{ field.label }}
+                    </label>
+
+                    {% if field.help_text %}
+                        <p class="mt-1 text-[10px] text-gray-400">{{ field.help_text }}</p>
+                    {% endif %}
+                    {% for error in field.errors %}
+                        <p class="text-red-500 text-xs mt-1">{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+                <p class="text-xs text-gray-500 leading-tight">
+                    By continuing, you agree to Flipkart's <span class="text-[#2874f0] cursor-pointer">Terms of Use</span> and <span class="text-[#2874f0] cursor-pointer">Privacy Policy</span>.
+                </p>
+
+                <!-- Orange Signup Button -->
+                <button type="submit"
+                        class="w-full bg-[#fb641b] text-white font-bold py-3 rounded-sm shadow-md hover:bg-[#f35606] transition duration-200 uppercase text-sm tracking-wide">
+                    Continue
+                </button>
+
+                <!-- Login Link Button -->
+                <div class="pt-4">
+                    <a href="{% url 'login' %}"
+                       class="block w-full text-center bg-white border border-gray-200 text-[#2874f0] font-bold py-3 rounded-sm shadow-sm hover:bg-gray-50 transition duration-200 uppercase text-sm tracking-wide">
+                        Existing User? Log in
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Styling for Django form input elements to match the theme */
+    input {
+        background: transparent !important;
+    }
+</style>
+{% endblock %}

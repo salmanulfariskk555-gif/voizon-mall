@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | VOIZON MALL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; }
+        .stat-card:hover { transform: translateY(-5px); transition: 0.3s; }
+    </style>
+</head>
+<body>
+
+<nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="text-2xl font-black tracking-tighter text-slate-900">VOIZON<span class="text-blue-600">.</span>MALL</a>
+        <a href="/" class="text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-blue-600 transition-all">Back to Shop</a>
+    </div>
+</nav>
+
+<section class="py-20 bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-blue-600 font-bold uppercase tracking-[0.3em] text-xs mb-4">Our Journey</h2>
+        <h1 class="text-4xl md:text-6xl font-black text-slate-900 mb-6">Building the future of <span class="text-blue-600">Shopping.</span></h1>
+        <p class="text-lg text-slate-600 leading-relaxed">
+            At VOIZON MALL, we believe shopping should be an experience, not a chore. Under the vision of <b>Voizon Digital Solution</b>, we bring you a curated marketplace that redefines quality and convenience.
+        </p>
+    </div>
+</section>
+
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="stat-card p-8 bg-white border border-gray-100 rounded-3xl shadow-sm text-center">
+            <h3 class="text-4xl font-black text-blue-600 mb-2">10k+</h3>
+            <p class="text-slate-500 font-bold text-xs uppercase tracking-widest">Happy Customers</p>
+        </div>
+        <div class="stat-card p-8 bg-white border border-gray-100 rounded-3xl shadow-sm text-center">
+            <h3 class="text-4xl font-black text-blue-600 mb-2">500+</h3>
+            <p class="text-slate-500 font-bold text-xs uppercase tracking-widest">Premium Brands</p>
+        </div>
+        <div class="stat-card p-8 bg-white border border-gray-100 rounded-3xl shadow-sm text-center">
+            <h3 class="text-4xl font-black text-blue-600 mb-2">24/7</h3>
+            <p class="text-slate-500 font-bold text-xs uppercase tracking-widest">Support</p>
+        </div>
+        <div class="stat-card p-8 bg-white border border-gray-100 rounded-3xl shadow-sm text-center">
+            <h3 class="text-4xl font-black text-blue-600 mb-2">100%</h3>
+            <p class="text-slate-500 font-bold text-xs uppercase tracking-widest">Secure Payments</p>
+        </div>
+    </div>
+</section>
+
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div class="rounded-[3rem] overflow-hidden shadow-2xl h-[400px]">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover" alt="Office">
+        </div>
+        <div>
+            <h3 class="text-3xl font-black text-slate-900 mb-6 underline decoration-blue-500 decoration-4 underline-offset-8">Our Vision</h3>
+            <p class="text-slate-600 mb-6 leading-relaxed">
+                To be the world’s most customer-centric destination where people can find and discover anything they might want to buy online. We aim to empower local businesses and international brands through our innovative platform.
+            </p>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold">✓</div>
+                    <span class="font-bold text-slate-700">Quality Guaranteed</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold">✓</div>
+                    <span class="font-bold text-slate-700">Fastest Delivery in Kerala</span>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div class="w-6 h-6 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs font-bold">✓</div>
+                    <span class="font-bold text-slate-700">Tech-Driven Shopping</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="py-10 text-center border-t border-gray-100">
+    <p class="text-slate-400 text-xs font-bold tracking-widest uppercase">© 2026 VOIZON DIGITAL SOLUTIONS</p>
+</footer>
+
+</body>
+</html>

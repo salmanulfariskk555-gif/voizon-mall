@@ -1,0 +1,90 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }} | VOIZON MALL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; }
+        .product-image-container { background: radial-gradient(circle, #f8fafc 0%, #f1f5f9 100%); }
+    </style>
+</head>
+<body>
+
+<nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="text-2xl font-black tracking-tighter text-slate-900">VOIZON<span class="text-blue-600">.</span>MALL</a>
+        <div class="flex items-center space-x-6">
+            <a href="{% url 'cart_view' %}" class="text-slate-700 relative">
+                <i class="fa-solid fa-cart-shopping text-xl"></i>
+            </a>
+            <a href="/" class="text-sm font-bold uppercase tracking-widest text-slate-600 hover:text-blue-600 transition-all">Back to Shop</a>
+        </div>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-6 py-12">
+    <div class="grid md:grid-cols-2 gap-16 items-start">
+
+        <div class="product-image-container rounded-[3rem] overflow-hidden p-8 flex items-center justify-center min-h-[500px]">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="max-w-full max-h-[400px] object-contain hover:scale-105 transition-transform duration-500">
+            {% else %}
+                <div class="text-center text-gray-300">
+                    <i class="fa-solid fa-box-open text-9xl"></i>
+                    <p class="mt-4 font-bold">No Image Available</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="flex flex-col justify-center">
+            <div class="mb-8 border-b border-gray-100 pb-8">
+                <h4 class="text-blue-600 font-bold uppercase tracking-widest text-xs mb-2">{{ product.category|default:"Premium Collection" }}</h4>
+                <h1 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">{{ product.name }}</h1>
+                <div class="flex items-center space-x-2 text-yellow-400 mb-4">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span class="text-slate-400 text-sm ml-2">(120+ Reviews)</span>
+                </div>
+                <p class="text-3xl font-black text-slate-900">₹{{ product.price }}</p>
+            </div>
+
+            <div class="mb-8">
+                <h5 class="font-bold text-slate-800 mb-3">About this item</h5>
+                <p class="text-slate-600 leading-relaxed text-lg">
+                    {{ product.description|default:"Experience the pinnacle of quality with this exclusive product from Voizon Mall. Crafted with care and designed for those who value excellence." }}
+                </p>
+            </div>
+
+            <div class="flex flex-col space-y-4">
+                <a href="{% url 'add_to_cart' product.id %}" class="w-full bg-black text-white text-center py-5 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl">
+                    ADD TO CART
+                </a>
+                <div class="flex items-center justify-center space-x-8 pt-4">
+                    <div class="flex items-center space-x-2 text-xs font-bold text-slate-500 uppercase tracking-tighter">
+                        <i class="fa-solid fa-truck-fast text-blue-600"></i>
+                        <span>Free Delivery</span>
+                    </div>
+                    <div class="flex items-center space-x-2 text-xs font-bold text-slate-500 uppercase tracking-tighter">
+                        <i class="fa-solid fa-shield-halved text-blue-600"></i>
+                        <span>Secure Payment</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="py-10 text-center border-t border-gray-50 mt-20">
+    <p class="text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">© 2026 VOIZON DIGITAL SOLUTIONS</p>
+</footer>
+
+</body>
+</html>

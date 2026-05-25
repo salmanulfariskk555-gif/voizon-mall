@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | VOIZON MALL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+        .order-card { transition: all 0.3s ease; border: 1px solid #f1f5f9; }
+        .order-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
+    </style>
+</head>
+<body class="text-slate-900">
+
+<nav class="h-20 bg-white border-b border-gray-100 flex items-center px-6 justify-between sticky top-0 z-50">
+    <a href="/" class="text-2xl font-black tracking-tighter">VOIZON<span class="text-blue-600">.</span>MALL</a>
+    <div class="flex items-center space-x-6">
+        <a href="/" class="text-sm font-bold text-slate-500 hover:text-black uppercase tracking-widest">Shop More</a>
+    </div>
+</nav>
+
+<main class="max-w-4xl mx-auto px-6 py-16">
+    <div class="flex items-center justify-between mb-12">
+        <h1 class="text-4xl font-black tracking-tight">Order History<span class="text-blue-600">.</span></h1>
+        <span class="bg-blue-100 text-blue-600 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+            {{ orders.count }} Orders
+        </span>
+    </div>
+
+    <div class="space-y-6">
+        {% for order in orders %}
+        <div class="order-card bg-white p-8 rounded-[2.5rem] shadow-sm">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 pb-6 border-b border-slate-50">
+                <div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-1">Order ID</p>
+                    <h3 class="font-black text-lg">#VM-{{ order.id|add:"1000" }}</h3>
+                </div>
+                <div class="mt-4 md:mt-0 text-md-right">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-1">Date</p>
+                    <p class="font-bold text-slate-700">{{ order.order_date|date:"d M, Y" }}</p>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-1">Status</p>
+                    <div class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                        <span class="font-black text-emerald-600 uppercase text-xs tracking-widest">{{ order.status }}</span>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-1">Total Amount</p>
+                    <p class="text-2xl font-black text-slate-900">₹{{ order.total_amount }}</p>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <button class="text-xs font-black text-blue-600 uppercase tracking-widest hover:underline">
+                    Download Invoice <i class="fa-solid fa-download ml-1"></i>
+                </button>
+            </div>
+        </div>
+        {% empty %}
+        <div class="text-center py-20 bg-white rounded-[3rem] border-2 border-dashed border-slate-200">
+            <i class="fa-solid fa-box-open text-5xl text-slate-200 mb-4"></i>
+            <p class="text-slate-400 font-bold italic">You haven't placed any orders yet.</p>
+            <a href="/" class="inline-block mt-6 bg-black text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-widest">Start Shopping</a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+<footer class="py-10 text-center text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">
+    © 2026 VOIZON DIGITAL SOLUTIONS
+</footer>
+
+</body>
+</html>

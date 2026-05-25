@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | VOIZON MALL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; }
+        .input-field { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px 16px; width: 100%; outline: none; transition: all 0.3s; }
+        .input-field:focus { border-color: #2563eb; background-color: #ffffff; box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        .profile-card { border: 1px solid #f1f5f9; border-radius: 3rem; }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+<nav class="h-20 border-b border-gray-100 flex items-center px-6 justify-between sticky top-0 bg-white/80 backdrop-blur-md z-50">
+    <a href="/" class="text-2xl font-black tracking-tighter">VOIZON<span class="text-blue-600">.</span>MALL</a>
+    <div class="flex items-center space-x-6">
+        <a href="{% url 'my_orders' %}" class="text-sm font-bold text-slate-500 hover:text-black uppercase tracking-widest">My Orders</a>
+        <a href="{% url 'logout' %}" class="text-sm font-bold text-red-500 hover:text-red-700 uppercase tracking-widest">Logout</a>
+    </div>
+</nav>
+
+<main class="max-w-4xl mx-auto px-6 py-16">
+    <div class="profile-card bg-white p-12 shadow-sm">
+        <div class="flex items-center space-x-6 mb-12">
+            <div class="w-24 h-24 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-full flex items-center justify-center text-white text-3xl font-black">
+                {{ user.username|first|upper }}
+            </div>
+            <div>
+                <h1 class="text-3xl font-black tracking-tight">{{ user.username }}</h1>
+                <p class="text-slate-400 font-medium italic">{{ user.email }}</p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="space-y-8">
+                <h2 class="text-xl font-bold border-b border-slate-50 pb-4">Personal Information</h2>
+                <form class="space-y-6">
+                    <div>
+                        <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Username</label>
+                        <input type="text" value="{{ user.username }}" class="input-field" readonly>
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold uppercase tracking-widest text-slate-400 mb-2 block">Email Address</label>
+                        <input type="email" value="{{ user.email }}" class="input-field" placeholder="Update your email">
+                    </div>
+                    <button type="submit" class="bg-black text-white px-8 py-3 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-800 transition-all">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+
+            <div class="space-y-8">
+                <h2 class="text-xl font-bold border-b border-slate-50 pb-4">Security</h2>
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl group hover:bg-blue-50 transition-all">
+                        <div class="flex items-center space-x-4">
+                            <i class="fa-solid fa-lock text-slate-400 group-hover:text-blue-600"></i>
+                            <span class="font-bold text-sm">Change Password</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-300"></i>
+                    </a>
+                    <a href="{% url 'my_orders' %}" class="flex items-center justify-between p-4 bg-slate-50 rounded-2xl group hover:bg-blue-50 transition-all">
+                        <div class="flex items-center space-x-4">
+                            <i class="fa-solid fa-bag-shopping text-slate-400 group-hover:text-blue-600"></i>
+                            <span class="font-bold text-sm">Order History</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-[10px] text-slate-300"></i>
+                    </a>
+                </div>
+
+                <div class="pt-6">
+                    <p class="text-xs text-slate-400 font-medium leading-relaxed">
+                        Member since: <span class="text-slate-600 font-bold">{{ user.date_joined|date:"F Y" }}</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="py-10 text-center text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">
+    © 2026 VOIZON DIGITAL SOLUTIONS
+</footer>
+
+</body>
+</html>

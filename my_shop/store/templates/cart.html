@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Bag | VOIZON MALL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+        .cart-item-card { transition: all 0.3s ease; }
+        .cart-item-card:hover { transform: scale(1.01); }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+<nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <a href="/" class="text-2xl font-black tracking-tighter text-slate-900">VOIZON<span class="text-blue-600">.</span>MALL</a>
+        <a href="/" class="text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-black transition-all">Continue Shopping</a>
+    </div>
+</nav>
+
+<main class="max-w-5xl mx-auto px-6 py-12">
+    <h1 class="text-4 shadow-sm text-4xl font-black text-slate-900 mb-10">Shopping Bag<span class="text-blue-600">.</span></h1>
+
+    <div class="grid lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-2 space-y-4">
+            {% for item in cart_items %}
+            <div class="cart-item-card bg-white p-6 rounded-3xl border border-gray-100 flex items-center justify-between shadow-sm">
+                <div class="flex items-center space-x-6">
+                    <div class="w-24 h-24 bg-slate-100 rounded-2xl overflow-hidden flex-shrink-0">
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" class="w-full h-full object-contain p-2">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-gray-300"><i class="fa-solid fa-image"></i></div>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">{{ item.product.name }}</h3>
+                        <p class="text-blue-600 font-extrabold mt-1">₹{{ item.product.price }}</p>
+
+                        <div class="flex items-center space-x-4 mt-3 bg-slate-100 w-fit rounded-lg px-2 py-1">
+                            <a href="{% url 'decrease_cart_item' item.id %}" class="text-slate-500 hover:text-black"><i class="fa-solid fa-minus text-xs"></i></a>
+                            <span class="font-bold text-sm text-slate-700">{{ item.quantity }}</span>
+                            <a href="{% url 'add_to_cart' item.product.id %}" class="text-slate-500 hover:text-black"><i class="fa-solid fa-plus text-xs"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <a href="{% url 'remove_from_cart' item.id %}" class="text-red-400 hover:text-red-600 transition-colors">
+                        <i class="fa-regular fa-trash-can text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="bg-white p-12 rounded-3xl text-center border-2 border-dashed border-gray-200">
+                <p class="text-slate-400 font-bold mb-4 italic">Your bag is empty.</p>
+                <a href="/" class="text-blue-600 font-black uppercase text-xs tracking-widest underline">Go fill it up!</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="lg:col-span-1">
+            <div class="bg-slate-900 text-white p-8 rounded-[2.5rem] shadow-2xl sticky top-24">
+                <h3 class="text-xl font-bold mb-6">Order Summary</h3>
+                <div class="space-y-4 text-sm font-medium">
+                    <div class="flex justify-between text-slate-400 italic">
+                        <span>Subtotal</span>
+                        <span>₹{{ total_price }}</span>
+                    </div>
+                    <div class="flex justify-between text-slate-400 italic">
+                        <span>Shipping</span>
+                        <span class="text-emerald-400">FREE</span>
+                    </div>
+                    <div class="border-t border-slate-800 pt-4 flex justify-between text-xl font-black">
+                        <span>Total</span>
+                        <span>₹{{ total_price }}</span>
+                    </div>
+                </div>
+
+                <a href="{% url 'checkout' %}" class="block w-full bg-blue-600 text-center text-white py-5 rounded-2xl font-bold mt-10 hover:bg-blue-500 transition-all shadow-lg uppercase tracking-widest">
+                    Checkout Now
+                </a>
+
+                <p class="text-[10px] text-center text-slate-500 mt-6 uppercase tracking-tighter">
+                    Tax included • Secure SSL encrypted payment
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="py-10 text-center">
+    <p class="text-slate-400 text-[10px] font-bold tracking-[0.3em] uppercase">© 2026 VOIZON DIGITAL SOLUTIONS</p>
+</footer>
+
+</body>
+</html>
