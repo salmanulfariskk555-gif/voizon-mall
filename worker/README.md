@@ -8,7 +8,7 @@ This Worker keeps the OpenAI API key on the server. Never put the key in website
 2. Create a Worker named `voizon-ask-assistant`.
 3. Paste the contents of `src/index.js` into the Worker editor and deploy.
 4. In the Worker settings, add a secret named `OPENAI_API_KEY` with your OpenAI API key. Do not share or commit the key.
-5. Keep the variable `OPENAI_MODEL` set to `gpt-5.5` (or a model enabled for your API project).
+5. Keep the variable `OPENAI_MODEL` set to `gpt-6.1-sol` (or a model enabled for your API project).
 6. Copy the Worker URL. The chat page will need this endpoint with `/chat` appended.
 7. In `assets/js/ask-voizon.js`, replace `YOUR_CLOUDFLARE_WORKER_URL` with your Worker base URL, e.g. `https://voizon-ask-assistant.<your-subdomain>.workers.dev`. Commit and push that change.
 
