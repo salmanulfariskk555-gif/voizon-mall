@@ -143,3 +143,17 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 .project-visual span{position:absolute;left:12px;bottom:12px;background:#071a38d9;color:#fff;padding:8px 11px;border-radius:4px;font:800 9px 'DM Sans';letter-spacing:1px}
 .project-disclaimer{font-size:11px;color:var(--muted);line-height:1.8;margin-top:20px}
 @media(max-width:760px){.project-intro-grid,.project-content{grid-template-columns:1fr;gap:22px}.project-card{padding:32px 0 42px}.project-scope{padding:20px}}
+
+/* Private portfolio access request */
+.private-work-section{padding-top:24px;padding-bottom:36px}
+.private-work-card{max-width:780px;margin:0 auto;text-align:center;padding:clamp(30px,6vw,64px);border:1px solid #dceafa;border-radius:18px;background:linear-gradient(145deg,#f7fbff,#eaf4ff);box-shadow:0 18px 55px #082b550d}
+.private-work-icon{width:66px;height:66px;border-radius:18px;margin:0 auto 22px;display:grid;place-items:center;background:linear-gradient(145deg,#28b9f5,#0754bd 70%,#092c68);color:white;font:800 40px Manrope;box-shadow:0 12px 30px #0878e833}
+.private-work-card h2{font:800 clamp(29px,4vw,42px)/1.15 Manrope;color:var(--navy);letter-spacing:-1.4px;margin:10px 0 16px}
+.private-work-card>p:not(.eyebrow){max-width:600px;margin:0 auto 24px;color:var(--muted);font-size:14px;line-height:1.9}
+.private-work-card .private-work-note{font-size:11px!important;margin:18px auto 0!important;color:#77879c!important}
+.private-work-points{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:32px;padding-bottom:75px}
+.private-work-points>div{padding:22px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.private-work-points span{font:800 11px Manrope;color:var(--blue)}
+.private-work-points h3{font:700 17px Manrope;color:var(--navy);margin:10px 0}
+.private-work-points p{font-size:12px;line-height:1.8;color:var(--muted);margin:0}
+@media(max-width:700px){.private-work-points{grid-template-columns:1fr;gap:12px}}
