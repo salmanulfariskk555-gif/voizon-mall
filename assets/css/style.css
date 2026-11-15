@@ -15,3 +15,13 @@
 .service-list article>p{max-width:780px}
 @media(max-width:850px){.process{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.service-grid,.process{grid-template-columns:1fr}}
+
+/* FAQ and content page refinements */
+.faq-list{max-width:1000px;margin:0 auto}
+.faq{border-bottom:1px solid var(--line);padding:22px 0}
+.faq summary{font:700 17px Manrope;color:var(--navy);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--blue);font-size:22px;line-height:1}
+.faq[open] summary:after{content:"−"}
+.faq p{max-width:850px;color:var(--muted);font-size:14px;line-height:1.9;margin:16px 0 0}
+@media(max-width:850px){.header nav{max-height:calc(100vh - 72px);overflow:auto}}
