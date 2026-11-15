@@ -57,3 +57,6 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  const list=main.querySelector(".service-list");
  if(list){const next=document.createElement("div");next.className="service-next-step";next.innerHTML='<div><p class="eyebrow">YOUR REQUIREMENT, YOUR SCOPE</p><h2>Let’s shape the right approach.</h2><p>Share your business, goals and requirements. We can discuss the suitable scope, deliverables and next steps before moving ahead.</p></div><a class="btn primary" href="contact.html?service='+encodeURIComponent(data.tag)+'">Send an enquiry ↗</a>';list.insertAdjacentElement("afterend",next);}
 })();
+
+/* Load the Ask VOIZON assistant on every page */
+(()=>{const s=document.createElement('script');s.src='assets/js/ask-voizon.js';s.defer=true;document.body.appendChild(s);})();
