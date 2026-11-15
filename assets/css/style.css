@@ -212,3 +212,30 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
  #voizon-chat .vz-chat-launch{padding:11px 15px;font-size:12px}
 }
 @media(prefers-reduced-motion:reduce){#voizon-chat .vz-chat-launch{animation:none}}
+
+/* Ask VOIZON running mascot: travels around screen edges and pauses when opened */
+#voizon-chat{position:fixed;left:22px;bottom:22px;right:auto;top:auto;width:150px;height:52px;z-index:1000;animation:vz-run-route 24s linear infinite}
+#voizon-chat .vz-chat-launch{width:150px;min-height:48px;justify-content:center;gap:8px;white-space:nowrap;animation:none;box-shadow:0 8px 24px #071a3840}
+#voizon-chat .vz-runner{font-size:22px;display:inline-block;animation:vz-run-bounce .38s ease-in-out infinite alternate}
+#voizon-chat .vz-chat-panel{position:absolute;left:0;right:auto;bottom:62px}
+#voizon-chat.vz-chat-open{animation-play-state:paused}
+#voizon-chat.vz-chat-open .vz-runner{animation-play-state:paused}
+@keyframes vz-run-route{
+ 0%,100%{left:22px;bottom:22px}
+ 24%{left:calc(100vw - 172px);bottom:22px}
+ 49%{left:calc(100vw - 172px);bottom:calc(100vh - 82px)}
+ 74%{left:22px;bottom:calc(100vh - 82px)}
+}
+@keyframes vz-run-bounce{from{transform:translateY(1px) rotate(-7deg)}to{transform:translateY(-3px) rotate(7deg)}}
+@media(max-width:520px){
+ #voizon-chat{width:136px;height:46px}
+ #voizon-chat .vz-chat-launch{width:136px;min-height:44px;padding:10px 12px;font-size:11px}
+ #voizon-chat .vz-chat-panel{left:0;right:auto;bottom:56px}
+ @keyframes vz-run-route{
+  0%,100%{left:12px;bottom:12px}
+  24%{left:calc(100vw - 148px);bottom:12px}
+  49%{left:calc(100vw - 148px);bottom:calc(100vh - 72px)}
+  74%{left:12px;bottom:calc(100vh - 72px)}
+ }
+}
+@media(prefers-reduced-motion:reduce){#voizon-chat{animation:none}#voizon-chat .vz-runner{animation:none}}
