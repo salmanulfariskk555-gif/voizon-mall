@@ -251,3 +251,38 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 #voizon-chat .vz-chat-panel>header .vz-chat-brand{display:flex;align-items:center;gap:11px;min-width:0}
 #voizon-chat .vz-chat-panel>header .vz-chat-brand img{display:block;width:94px;height:34px;object-fit:contain;object-position:left center;padding:4px 6px;background:#fff;border-radius:6px}
 #voizon-chat .vz-chat-panel>header .vz-chat-brand b{font:700 14px Manrope,sans-serif;white-space:nowrap}
+
+/* Mascot hands out animated service flyers while travelling */
+#voizon-chat{width:270px;height:150px}
+#voizon-chat .vz-chat-launch{width:270px;height:150px}
+#voizon-chat .vz-service-flyer{position:absolute;left:105px;top:25px;z-index:2;display:block;min-width:75px;padding:7px 9px 7px 11px;background:#fff;color:#0754bd;border:1px solid #b9d5f1;border-radius:3px 7px 3px 3px;box-shadow:0 5px 14px #071a3830;font:900 9px/1 'DM Sans',sans-serif;letter-spacing:.35px;white-space:nowrap;opacity:0;transform-origin:left center;pointer-events:none}
+#voizon-chat .vz-service-flyer:after{content:"";position:absolute;right:0;top:0;border-top:8px solid #dcecff;border-left:8px solid transparent}
+#voizon-chat .vz-flyer-seo{animation:vz-fly-seo 5.8s ease-in-out infinite}
+#voizon-chat .vz-flyer-meta{animation:vz-fly-meta 5.8s ease-in-out infinite 1.05s}
+#voizon-chat .vz-flyer-google{animation:vz-fly-google 5.8s ease-in-out infinite 2.1s}
+#voizon-chat .vz-flyer-web{animation:vz-fly-web 5.8s ease-in-out infinite 3.15s}
+#voizon-chat .vz-flyer-brand{animation:vz-fly-brand 5.8s ease-in-out infinite 4.2s}
+@keyframes vz-fly-seo{0%,5%{opacity:0;transform:translate(0,12px) rotate(-8deg)}13%{opacity:1}32%{opacity:1;transform:translate(95px,-23px) rotate(9deg)}43%,100%{opacity:0;transform:translate(135px,-38px) rotate(15deg)}}
+@keyframes vz-fly-meta{0%,5%{opacity:0;transform:translate(0,12px) rotate(5deg)}13%{opacity:1}32%{opacity:1;transform:translate(115px,5px) rotate(-8deg)}43%,100%{opacity:0;transform:translate(145px,20px) rotate(-14deg)}}
+@keyframes vz-fly-google{0%,5%{opacity:0;transform:translate(0,12px) rotate(-5deg)}13%{opacity:1}32%{opacity:1;transform:translate(92px,35px) rotate(7deg)}43%,100%{opacity:0;transform:translate(125px,55px) rotate(12deg)}}
+@keyframes vz-fly-web{0%,5%{opacity:0;transform:translate(0,12px) rotate(6deg)}13%{opacity:1}32%{opacity:1;transform:translate(65px,-48px) rotate(-9deg)}43%,100%{opacity:0;transform:translate(95px,-65px) rotate(-14deg)}}
+@keyframes vz-fly-brand{0%,5%{opacity:0;transform:translate(0,12px) rotate(-4deg)}13%{opacity:1}32%{opacity:1;transform:translate(130px,-8px) rotate(8deg)}43%,100%{opacity:0;transform:translate(165px,-18px) rotate(15deg)}}
+@keyframes vz-run-route{
+  0%,100%{left:18px;bottom:18px}
+  24%{left:calc(100vw - 288px);bottom:18px}
+  49%{left:calc(100vw - 288px);bottom:calc(100vh - 168px)}
+  74%{left:18px;bottom:calc(100vh - 168px)}
+}
+#voizon-chat.vz-chat-open .vz-service-flyer{animation-play-state:paused}
+@media(max-width:520px){
+ #voizon-chat{width:230px;height:132px}
+ #voizon-chat .vz-chat-launch{width:230px;height:132px}
+ #voizon-chat .vz-service-flyer{left:91px;min-width:68px;padding:6px 7px;font-size:8px}
+ @keyframes vz-run-route{
+  0%,100%{left:10px;bottom:10px}
+  24%{left:calc(100vw - 240px);bottom:10px}
+  49%{left:calc(100vw - 240px);bottom:calc(100vh - 145px)}
+  74%{left:10px;bottom:calc(100vh - 145px)}
+ }
+}
+@media(prefers-reduced-motion:reduce){#voizon-chat .vz-service-flyer{animation:none;opacity:1;position:static;display:inline-block;margin:2px}}
