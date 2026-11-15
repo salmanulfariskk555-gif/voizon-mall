@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Add the XML sitemap URL after the production website domain is confirmed.
