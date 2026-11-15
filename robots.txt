@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Add the XML sitemap URL after the production website domain is confirmed.
+Sitemap: https://salmanulfariskk555-gif.github.io/voizon-mall/sitemap.xml
