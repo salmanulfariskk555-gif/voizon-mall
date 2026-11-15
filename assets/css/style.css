@@ -199,3 +199,16 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 .founder-focus strong{color:var(--navy)}
 @media(max-width:900px){.founders-grid{grid-template-columns:1fr}}
 @media(max-width:520px){.founder-card{grid-template-columns:100px 1fr;gap:15px;padding:15px}.founder-photo{max-height:150px}.founder-initials{font-size:30px}}
+
+/* Keep Ask VOIZON separate from WhatsApp and enquiry actions */
+#voizon-chat{left:22px;right:auto;bottom:22px;z-index:1000}
+#voizon-chat .vz-chat-panel{left:0;right:auto}
+#voizon-chat .vz-chat-launch{animation:vz-attention 3.8s ease-in-out infinite;transform-origin:center}
+#voizon-chat .vz-chat-launch:hover{animation-play-state:paused;transform:translateY(-3px)}
+@keyframes vz-attention{0%,82%,100%{transform:translateY(0)}86%{transform:translateY(-5px)}90%{transform:translateY(0)}94%{transform:translateY(-3px)}}
+@media(max-width:520px){
+ #voizon-chat{left:12px;right:auto;bottom:12px}
+ #voizon-chat .vz-chat-panel{left:0;right:auto}
+ #voizon-chat .vz-chat-launch{padding:11px 15px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){#voizon-chat .vz-chat-launch{animation:none}}
