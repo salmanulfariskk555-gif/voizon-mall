@@ -34,3 +34,10 @@
 .floating-contact .whatsapp-float{background:#168b58;color:#fff}
 .floating-contact .float-icon{font-size:17px;line-height:1}
 @media(max-width:520px){.floating-contact{right:12px;bottom:12px;gap:7px}.floating-contact a{padding:11px 14px;font-size:11px}}
+
+/* Official VOIZON logo sizing */
+a.logo{display:flex;align-items:center;flex:0 0 auto;gap:0;letter-spacing:0;}
+a.logo img{display:block;width:clamp(180px,18vw,235px);height:auto;max-height:62px;object-fit:contain;object-position:left center;}
+footer a.logo img{width:220px;max-height:58px;}
+@media(max-width:900px){a.logo img{width:190px;max-height:54px;}}
+@media(max-width:480px){a.logo img{width:166px;max-height:48px;}}
