@@ -185,3 +185,17 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 .vz-chat-form button{width:40px;border:0;border-radius:8px;background:#0878e8;color:#fff;font-size:17px;cursor:pointer}
 .vz-chat-disclaimer{margin:0;padding:0 12px 10px;font-size:9px;color:#7c8ba0;line-height:1.5}
 @media(max-width:520px){#voizon-chat{right:12px;bottom:12px}.vz-chat-panel{right:0;bottom:58px;height:min(490px,calc(100vh - 90px))}}
+
+/* Founders profile section */
+.founders-section{padding-top:70px;padding-bottom:78px}
+.founders-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:30px}
+.founder-card{display:grid;grid-template-columns: minmax(130px, .72fr) 1.28fr;gap:22px;align-items:start;padding:22px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 12px 36px #082b5508}
+.founder-photo{width:100%;aspect-ratio:4/5;max-height:250px;border-radius:10px;object-fit:cover;background:linear-gradient(145deg,#eaf4ff,#d8e8fa)}
+.founder-initials{display:grid;place-items:center;color:#0754bd;font:800 42px Manrope,sans-serif;letter-spacing:-2px}
+.founder-info h3{font:800 clamp(19px,2vw,24px)/1.2 Manrope,sans-serif;color:var(--navy);margin:8px 0}
+.founder-qualification{font-weight:700;color:#0754bd;font-size:13px}
+.founder-info>p:not(.eyebrow){font-size:12px;line-height:1.8;color:var(--muted)}
+.founder-focus{padding-top:10px;border-top:1px solid var(--line)}
+.founder-focus strong{color:var(--navy)}
+@media(max-width:900px){.founders-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.founder-card{grid-template-columns:100px 1fr;gap:15px;padding:15px}.founder-photo{max-height:150px}.founder-initials{font-size:30px}}
