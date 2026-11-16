@@ -9,7 +9,7 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  if(document.querySelector('.voizon-chat-launcher')) return;
  const wrap=document.createElement('div');
  wrap.className='voizon-chat';
- wrap.innerHTML='<button class="voizon-chat-launcher" type="button" aria-label="Open Ask VOIZON chat"><span aria-hidden="true">✦</span> Ask VOIZON</button>'+
+ wrap.innerHTML='<div class="voizon-contact-actions"><button class="voizon-chat-launcher" type="button" aria-label="Open Ask VOIZON chat"><span aria-hidden="true">✦</span> Ask VOIZON</button><a class="voizon-action-icon voizon-whatsapp" href="https://wa.me/919567497943?text=Hello%20VOIZON%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener noreferrer" aria-label="Chat with VOIZON on WhatsApp" title="WhatsApp">◉</a><a class="voizon-action-icon voizon-call" href="tel:+919567497943" aria-label="Call VOIZON" title="Call VOIZON">☎</a></div>'+
  '<section class="voizon-chat-panel" role="dialog" aria-label="Ask VOIZON assistant" aria-modal="false" hidden>'+
  '<header class="voizon-chat-head"><div><strong>Ask VOIZON</strong><small>Website assistant · Instant answers</small></div><button type="button" class="voizon-chat-close" aria-label="Close chat">×</button></header>'+
  '<div class="voizon-chat-messages" aria-live="polite"><div class="voizon-msg bot">Hi! 👋 Welcome to VOIZON. How can I help you today?</div></div>'+
@@ -18,8 +18,8 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  '<div class="voizon-chat-foot">Automated assistant · For detailed help, WhatsApp our team</div></section>';
  document.body.appendChild(wrap);
  const panel=wrap.querySelector('.voizon-chat-panel'),launcher=wrap.querySelector('.voizon-chat-launcher'),messages=wrap.querySelector('.voizon-chat-messages'),form=wrap.querySelector('form'),input=form.querySelector('input');
- function openChat(){panel.hidden=false;launcher.hidden=true;input.focus();}
- function closeChat(){panel.hidden=true;launcher.hidden=false;launcher.focus();}
+ function openChat(){panel.hidden=false;wrap.querySelector('.voizon-contact-actions').hidden=true;input.focus();}
+ function closeChat(){panel.hidden=true;wrap.querySelector('.voizon-contact-actions').hidden=false;launcher.focus();}
  function addMessage(text,who){const node=document.createElement('div');node.className='voizon-msg '+who;node.textContent=text;messages.appendChild(node);messages.scrollTop=messages.scrollHeight;}
  function reply(q){
   const s=q.toLowerCase();
