@@ -64,7 +64,7 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
 /* Page-specific illustrations for service and company pages */
 (function(){
  const illustrations={
-  "about":"pages/business-solutions","solutions":"pages/business-solutions","industries":"pages/business-solutions","faq":"pages/business-solutions","process":"pages/business-solutions","contact":"pages/business-solutions",
+  "about":"pages/business-solutions","services":"pages/business-solutions","solutions":"pages/business-solutions","industries":"pages/business-solutions","faq":"pages/business-solutions","process":"pages/business-solutions","contact":"pages/business-solutions",
   "portfolio":"pages/creative-work","blog":"pages/creative-work",
   "international":"pages/global-partnership",
   "seo":"services/digital-marketing","google-ads":"services/digital-marketing","meta-ads":"services/digital-marketing","paid-advertising":"services/digital-marketing","social-media":"services/digital-marketing","content-marketing":"services/digital-marketing","lead-generation":"services/digital-marketing","email-marketing":"services/digital-marketing","analytics-reporting":"services/digital-marketing","digital-strategy":"services/digital-marketing",
