@@ -8,8 +8,23 @@ if(m&&n){
  n.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{n.classList.remove('open');m.setAttribute('aria-expanded','false');}));
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&n.classList.contains('open')){n.classList.remove('open');m.setAttribute('aria-expanded','false');m.focus();}});
 }
-const currentPath=location.pathname.replace(/index\\.html$/,'').replace(/\\/$/,'')||'/';
-document.querySelectorAll('header nav a').forEach(a=>{const target=new URL(a.href,location.origin).pathname.replace(/index\\.html$/,'').replace(/\\/$/,'')||'/';if(target===currentPath)a.setAttribute('aria-current','page');});const f=document.getElementById('enquiry');if(f)f.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(f);const lines=['Hello VOIZON, I would like to enquire.','Name: '+d.get('name'),'Business: '+(d.get('business')||'Not provided') ,'Email: '+(d.get('email')||'Not provided'),'Phone: '+(d.get('phone')||'Not provided'),'Country / market: '+(d.get('country')||'Not provided'),'Website / profile: '+(d.get('website')||'Not provided'),'Preferred contact: '+(d.get('preferred')||'Not specified'),'Service: '+d.get('service'),'Budget / currency: '+(d.get('budget')||'Not decided'),'Expected timeline: '+(d.get('timeline')||'Not specified'),'Details: '+d.get('message')];const url='https://wa.me/919567497943?text='+encodeURIComponent(lines.join('\n'));window.open(url,'_blank','noopener');});
+const normalizePath=path=>path.replace(/index\.html$/,'').replace(/\/$/,'')||'/';
+const currentPath=normalizePath(location.pathname);
+let currentNavLink=null;
+document.querySelectorAll('header nav a').forEach(a=>{
+ const target=normalizePath(new URL(a.href,location.origin).pathname);
+ if(target===currentPath){a.setAttribute('aria-current','page');currentNavLink=a;}
+});
+/* Clear orientation on every inner page: Home > Current page */
+const main=document.querySelector('body > main');
+if(main&&currentPath!=='/'&&!document.querySelector('.site-breadcrumb')){
+ const label=currentNavLink?currentNavLink.textContent.trim().replace(/↗/g,'').trim():(document.title.split('|')[0].trim()||'Page');
+ const crumb=document.createElement('nav');crumb.className='site-breadcrumb';crumb.setAttribute('aria-label','Breadcrumb');
+ const home=document.createElement('a');home.href='/';home.textContent='Home';
+ const sep=document.createElement('span');sep.setAttribute('aria-hidden','true');sep.textContent='›';
+ const here=document.createElement('span');here.setAttribute('aria-current','page');here.textContent=label;
+ crumb.append(home,sep,here);main.before(crumb);
+}const f=document.getElementById('enquiry');if(f)f.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(f);const lines=['Hello VOIZON, I would like to enquire.','Name: '+d.get('name'),'Business: '+(d.get('business')||'Not provided') ,'Email: '+(d.get('email')||'Not provided'),'Phone: '+(d.get('phone')||'Not provided'),'Country / market: '+(d.get('country')||'Not provided'),'Website / profile: '+(d.get('website')||'Not provided'),'Preferred contact: '+(d.get('preferred')||'Not specified'),'Service: '+d.get('service'),'Budget / currency: '+(d.get('budget')||'Not decided'),'Expected timeline: '+(d.get('timeline')||'Not specified'),'Details: '+d.get('message')];const url='https://wa.me/919567497943?text='+encodeURIComponent(lines.join('\n'));window.open(url,'_blank','noopener');});
 const params=new URLSearchParams(window.location.search);const serviceParam=params.get('service');const serviceSelect=document.querySelector('#enquiry select[name="service"]');if(serviceParam&&serviceSelect){const match=[...serviceSelect.options].find(o=>o.text.toLowerCase()===serviceParam.toLowerCase());if(match)serviceSelect.value=match.value;else{const opt=document.createElement('option');opt.textContent=serviceParam;opt.value=serviceParam;opt.selected=true;serviceSelect.insertBefore(opt,serviceSelect.firstChild);}}
 
 /* VOIZON mini chatbot */
