@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://salmanulfariskk555-gif.github.io/voizon-mall/sitemap.xml
+Sitemap: https://voizondigitalsolutions.com/sitemap.xml
