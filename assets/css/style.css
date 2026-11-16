@@ -439,3 +439,20 @@ header nav a{transition:color .18s ease}
 .menu{cursor:pointer;min-width:44px;min-height:44px;border-radius:8px}
 @media(max-width:760px){.header nav{max-height:calc(100vh - 76px);overflow-y:auto;overscroll-behavior:contain}.header nav a{padding:7px 0;font-size:14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Final page-hero typography and reading-width correction.
+   The page illustration is injected after the copy, so target all descriptive
+   paragraphs rather than relying on :last-child. */
+.pagehero{padding:clamp(64px,7vw,92px) clamp(24px,7vw,110px) clamp(58px,6vw,78px);overflow:hidden}
+.pagehero h1{max-width:1180px;font-size:clamp(40px,4.8vw,68px);line-height:1.08;letter-spacing:-2.4px;text-wrap:balance}
+.pagehero>p:not(.eyebrow){max-width:760px;margin-top:22px;font-size:clamp(15px,1.15vw,17px);line-height:1.8}
+.pagehero .about-experience{max-width:460px}
+.pagehero-illustration{max-width:900px;margin-top:30px}
+.pagehero-illustration img{object-fit:contain}
+@media(max-width:700px){
+ .pagehero{padding:58px 22px 48px}
+ .pagehero h1{font-size:clamp(36px,9vw,48px);letter-spacing:-1.5px}
+ .pagehero>p:not(.eyebrow){font-size:14px;line-height:1.75}
+ .pagehero-illustration{max-height:180px;margin-top:22px}
+ .pagehero-illustration img{max-height:180px}
+}
