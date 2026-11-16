@@ -1,7 +1,11 @@
-.diwali-marquee{position:relative;overflow:hidden;background:linear-gradient(100deg,#07172f,#0b3670 48%,#0878dc);color:#fff;border-top:1px solid #35aaff;border-bottom:1px solid #35aaff;padding:14px 0;box-shadow:0 8px 24px rgba(8,45,95,.14)}
-.diwali-marquee-track{display:flex;align-items:center;gap:58px;width:max-content;white-space:nowrap;animation:diwali-scroll 34s linear infinite;padding-left:100%;font:700 13px Manrope,'DM Sans',sans-serif;letter-spacing:.45px}
-.diwali-marquee-track span{display:inline-flex;align-items:center;gap:10px;color:#fff}
+.diwali-marquee{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(110deg,#07172f 0%,#0b3670 38%,#0878dc 68%,#07172f 100%);background-size:220% 100%;color:#fff;border-top:1px solid rgba(91,194,255,.9);border-bottom:1px solid rgba(91,194,255,.9);padding:14px 0;box-shadow:0 8px 26px rgba(8,45,95,.18);animation:voizonBannerGlow 12s ease-in-out infinite alternate}
+.diwali-marquee:before{content:"";position:absolute;z-index:2;top:-40%;bottom:-40%;left:-35%;width:22%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.13),transparent);transform:skewX(-20deg);animation:voizonBannerShine 7s ease-in-out infinite}
+.diwali-marquee-track{display:flex;align-items:center;gap:58px;width:max-content;white-space:nowrap;will-change:transform;animation:diwali-scroll 38s linear infinite;font:700 13px Manrope,'DM Sans',sans-serif;letter-spacing:.45px}
+.diwali-marquee-track span{display:inline-flex;align-items:center;gap:10px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.18)}
+.diwali-marquee-track span:nth-child(4n+1){color:#d8f2ff}
 .diwali-marquee:hover .diwali-marquee-track{animation-play-state:paused}
-@keyframes diwali-scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
-@media(prefers-reduced-motion:reduce){.diwali-marquee-track{animation:none;white-space:normal;width:auto;justify-content:center;padding:0 24px;flex-wrap:wrap;gap:12px}}
-@media(max-width:520px){.diwali-marquee{padding:12px 0}.diwali-marquee-track{font-size:11px;gap:34px;animation-duration:28s}}
+@keyframes diwali-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes voizonBannerGlow{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes voizonBannerShine{0%,15%{left:-35%;opacity:0}30%{opacity:1}65%,100%{left:120%;opacity:0}}
+@media(prefers-reduced-motion:reduce){.diwali-marquee{animation:none;background-position:50% 50%}.diwali-marquee:before{display:none}.diwali-marquee-track{animation:none;white-space:normal;width:auto;justify-content:center;padding:0 24px;flex-wrap:wrap;gap:12px}}
+@media(max-width:520px){.diwali-marquee{padding:12px 0}.diwali-marquee-track{font-size:11px;gap:34px;animation-duration:32s}}
