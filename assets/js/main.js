@@ -64,15 +64,18 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
 /* Page-specific illustrations for service and company pages */
 (function(){
  const illustrations={
-  "seo":"digital-marketing","google-ads":"digital-marketing","meta-ads":"digital-marketing","paid-advertising":"digital-marketing","social-media":"digital-marketing","content-marketing":"digital-marketing","lead-generation":"digital-marketing","email-marketing":"digital-marketing","analytics-reporting":"digital-marketing","digital-strategy":"digital-marketing",
-  "branding-design":"brand-creative","logo-brand-identity":"brand-creative","graphic-design":"brand-creative","print-design":"brand-creative","presentation-design":"brand-creative","video-editing":"brand-creative",
-  "web-development":"web-technology","ecommerce-development":"web-technology","web-applications":"web-technology","wordpress-development":"web-technology","ui-ux-design":"web-technology","website-maintenance":"web-technology",
-  "it-consulting":"consulting-automation","business-automation":"consulting-automation"
+  "about":"pages/business-solutions","solutions":"pages/business-solutions","industries":"pages/business-solutions","faq":"pages/business-solutions","process":"pages/business-solutions","contact":"pages/business-solutions",
+  "portfolio":"pages/creative-work","blog":"pages/creative-work",
+  "international":"pages/global-partnership",
+  "seo":"services/digital-marketing","google-ads":"services/digital-marketing","meta-ads":"services/digital-marketing","paid-advertising":"services/digital-marketing","social-media":"services/digital-marketing","content-marketing":"services/digital-marketing","lead-generation":"services/digital-marketing","email-marketing":"services/digital-marketing","analytics-reporting":"services/digital-marketing","digital-strategy":"services/digital-marketing",
+  "branding-design":"services/brand-creative","logo-brand-identity":"services/brand-creative","graphic-design":"services/brand-creative","print-design":"services/brand-creative","presentation-design":"services/brand-creative","video-editing":"services/brand-creative",
+  "web-development":"services/web-technology","ecommerce-development":"services/web-technology","web-applications":"services/web-technology","wordpress-development":"services/web-technology","ui-ux-design":"services/web-technology","website-maintenance":"services/web-technology",
+  "it-consulting":"services/consulting-automation","business-automation":"services/consulting-automation"
  };
  const slug=location.pathname.split('/').filter(Boolean).pop()||'index';
  const asset=illustrations[slug];if(!asset)return;
  const hero=document.querySelector('main .pagehero');if(!hero||hero.querySelector('.pagehero-illustration'))return;
  const wrap=document.createElement('div');wrap.className='pagehero-illustration';
- const img=document.createElement('img');img.src='/assets/images/services/'+asset+'.svg';img.alt=slug.replaceAll('-',' ')+' service illustration';img.loading='lazy';img.decoding='async';
+ const img=document.createElement('img');img.src='/assets/images/'+asset+'.svg';img.alt=slug.replaceAll('-',' ')+' service illustration';img.loading='lazy';img.decoding='async';
  wrap.appendChild(img);hero.appendChild(wrap);
 })();
