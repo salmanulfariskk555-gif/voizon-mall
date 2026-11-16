@@ -333,3 +333,19 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 .experience-story h2{margin:8px 0 0;font:800 clamp(25px,3vw,38px) Manrope;color:#102b55;line-height:1.2}
 .experience-story>p{margin:0;color:#5f6f85;line-height:1.85}
 @media(max-width:700px){.experience-band{align-items:flex-start;flex-direction:column;gap:12px;padding:22px 6vw}.experience-band strong,.about-experience>strong{font-size:40px}.experience-story{grid-template-columns:1fr;gap:16px}.about-experience{padding:17px}.hero-global-art img{max-width:420px}}
+
+
+/* Portfolio project showcase */
+.portfolio-intro{padding-top:58px}
+.portfolio-showcase{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;margin-top:34px}
+.portfolio-card{overflow:hidden;background:#fff;border:1px solid #e1e9f2;border-radius:18px;box-shadow:0 14px 38px rgba(12,39,75,.07);transition:transform .25s ease,box-shadow .25s ease}
+.portfolio-card:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(12,39,75,.12)}
+.portfolio-card>img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#102b55}
+.portfolio-card-copy{padding:24px}
+.portfolio-card-copy .eyebrow{font-size:10px;letter-spacing:1.4px;margin:0 0 10px}
+.portfolio-card-copy h3{font:800 22px Manrope;color:#102b55;margin:0 0 10px}
+.portfolio-card-copy>p:not(.eyebrow){color:#65758b;line-height:1.75;margin:0}
+.portfolio-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.portfolio-tags span{padding:7px 10px;border-radius:20px;background:#f0f6fc;color:#315575;font-size:11px;font-weight:700}
+@media(max-width:760px){.portfolio-showcase{grid-template-columns:1fr;gap:18px}.portfolio-card-copy{padding:19px}.portfolio-card-copy h3{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.portfolio-card{transition:none}.portfolio-card:hover{transform:none}}
