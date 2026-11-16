@@ -1,4 +1,4 @@
-# Search and AI discovery
+# Search engine crawling
 User-agent: *
 Allow: /
 
@@ -6,13 +6,14 @@ Allow: /
 User-agent: OAI-SearchBot
 Allow: /
 
-# GPTBot is separate from ChatGPT Search; training access is not required for search visibility
+# Keep training crawler access separate from search visibility
 User-agent: GPTBot
 Disallow: /
 
-# Allow Google-Extended for Gemini grounding and discovery
-# This also permits Google to use crawled content for Gemini model improvement
+# Google Search and its AI Overviews / AI Mode use Googlebot
+# Gemini Apps grounding is controlled separately by Google-Extended.
+# Leave Google-Extended disallowed unless VOIZON explicitly opts in.
 User-agent: Google-Extended
-Allow: /
+Disallow: /
 
 Sitemap: https://voizondigitalsolutions.com/sitemap.xml
