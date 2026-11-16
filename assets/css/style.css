@@ -456,3 +456,12 @@ header nav a{transition:color .18s ease}
  .pagehero-illustration{max-height:180px;margin-top:22px}
  .pagehero-illustration img{max-height:180px}
 }
+
+/* Consistent cross-page navigation and wayfinding */
+.header nav a[aria-current="page"]{color:#0878e8!important;font-weight:800;position:relative}
+.header nav a[aria-current="page"]:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:2px;border-radius:2px;background:#0878e8}
+.site-breadcrumb{display:flex;align-items:center;gap:10px;padding:13px clamp(24px,7vw,110px);background:#f4f8fd;border-bottom:1px solid #e3ebf5;color:#718198;font-size:12px}
+.site-breadcrumb a{color:#0878e8;text-decoration:none;font-weight:700}
+.site-breadcrumb a:hover{text-decoration:underline}
+.site-breadcrumb [aria-current="page"]{color:#243b5b;font-weight:700}
+@media(max-width:700px){.site-breadcrumb{padding:11px 22px;font-size:11px}}
