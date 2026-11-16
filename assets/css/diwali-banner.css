@@ -66,3 +66,13 @@
 .voizon-banner-cta .btn.outline{color:#102b55!important;background:#fff;border:1px solid #9aacc2}
 .voizon-banner-cta .btn.outline:hover{color:#0878e8!important;background:#f4f8fd;border-color:#0878e8}
 .voizon-banner-cta .btn.primary{color:#fff!important}
+
+/* Reusable, location-independent homepage CTA button styles */
+.voizon-banner-cta .actions .btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;min-width:250px;padding:15px 24px;border-radius:9px;font-size:14px;font-weight:800;line-height:1.25;text-align:center;text-decoration:none;white-space:normal;transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+.voizon-banner-cta .actions .btn.primary{color:#fff!important;background:#0878e8;border:1px solid #0878e8;box-shadow:0 7px 18px rgba(8,120,232,.16)}
+.voizon-banner-cta .actions .btn.primary:hover{color:#fff!important;background:#0668cc;border-color:#0668cc;box-shadow:0 10px 24px rgba(8,120,232,.23);transform:translateY(-2px)}
+.voizon-banner-cta .actions .btn.outline{color:#102b55!important;background:#fff;border:1.5px solid #9aacc2;box-shadow:0 5px 15px rgba(7,26,56,.05)}
+.voizon-banner-cta .actions .btn.outline:hover{color:#075fbd!important;background:#f2f8ff;border-color:#0878e8;box-shadow:0 9px 22px rgba(7,26,56,.10);transform:translateY(-2px)}
+.voizon-banner-cta .actions .btn:focus-visible{outline:3px solid #43b9ff;outline-offset:4px}
+@media(max-width:700px){.voizon-banner-cta .actions{display:grid;grid-template-columns:1fr;width:min(100%,440px);margin-inline:auto}.voizon-banner-cta .actions .btn{width:100%;min-width:0;min-height:50px}}
+@media(prefers-reduced-motion:reduce){.voizon-banner-cta .actions .btn{transition:none}.voizon-banner-cta .actions .btn:hover{transform:none}}
