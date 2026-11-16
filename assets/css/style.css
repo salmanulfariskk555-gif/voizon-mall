@@ -313,3 +313,23 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 .service-visual{min-height:260px;display:flex;align-items:center;justify-content:center;padding:8px}
 .service-visual img{display:block;width:100%;max-width:520px;max-height:320px;object-fit:contain;border-radius:14px;filter:drop-shadow(0 12px 20px #0d397c12)}
 @media(max-width:760px){.service-visual{min-height:190px;padding:0}.service-visual img{max-height:235px}}
+
+
+/* Global agency positioning and experience highlights */
+.hero-global-art{display:flex;align-items:center;justify-content:center;min-width:0}
+.hero-global-art img{display:block;width:100%;max-width:590px;height:auto;filter:drop-shadow(0 22px 42px rgba(0,40,100,.16))}
+.experience-band{display:flex;align-items:center;gap:28px;padding:24px 7vw;background:#f2f7fd;border-top:1px solid #e2ebf5;border-bottom:1px solid #e2ebf5}
+.experience-band>div{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.experience-band strong,.about-experience>strong{font:800 46px Manrope;color:#0878e8;line-height:1}
+.experience-band span{font-weight:700;color:#102b55;max-width:135px}
+.experience-band p{margin:0;color:#66758b;line-height:1.65;flex:1}
+.experience-band>a{font-weight:700;color:#0878e8;white-space:nowrap}
+.about-experience{display:flex;align-items:center;gap:18px;margin-top:26px;padding:20px 24px;max-width:430px;background:linear-gradient(120deg,#f1f7ff,#fff);border:1px solid #dce9f8;border-radius:18px}
+.about-experience>span{display:flex;flex-direction:column;gap:5px}
+.about-experience b{font:700 15px Manrope;color:#102b55}
+.about-experience small{font-size:12px;line-height:1.5;color:#66758b}
+.international-experience{margin:24px 0 8px}
+.experience-story{display:grid;grid-template-columns:1fr 1.1fr;gap:7vw;align-items:center;background:#f6f9fd}
+.experience-story h2{margin:8px 0 0;font:800 clamp(25px,3vw,38px) Manrope;color:#102b55;line-height:1.2}
+.experience-story>p{margin:0;color:#5f6f85;line-height:1.85}
+@media(max-width:700px){.experience-band{align-items:flex-start;flex-direction:column;gap:12px;padding:22px 6vw}.experience-band strong,.about-experience>strong{font-size:40px}.experience-story{grid-template-columns:1fr;gap:16px}.about-experience{padding:17px}.hero-global-art img{max-width:420px}}
