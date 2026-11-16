@@ -63,7 +63,7 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
 /* Page-specific illustrations for company pages. Service pages use their own unique artwork in the service framework panel. */
 (function(){
  const illustrations={
-  "about":"business-solutions","services":"business-solutions","solutions":"business-solutions","industries":"business-solutions","faq":"business-solutions","process":"business-solutions","contact":"business-solutions",
+  "about":"about","services":"services","solutions":"solutions","industries":"industries","faq":"faq","process":"process","contact":"contact",
   "portfolio":"creative-work","blog":"creative-work","international":"global-partnership"
  };
  const slug=location.pathname.split('/').filter(Boolean).pop()||'index';
