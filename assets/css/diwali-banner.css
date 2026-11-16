@@ -9,3 +9,10 @@
 @keyframes voizonBannerShine{0%,15%{left:-35%;opacity:0}30%{opacity:1}65%,100%{left:120%;opacity:0}}
 @media(prefers-reduced-motion:reduce){.diwali-marquee{animation:none;background-position:50% 50%}.diwali-marquee:before{display:none}.diwali-marquee-track{animation:none;white-space:normal;width:auto;justify-content:center;padding:0 24px;flex-wrap:wrap;gap:12px}}
 @media(max-width:520px){.diwali-marquee{padding:12px 0}.diwali-marquee-track{font-size:11px;gap:34px;animation-duration:32s}}
+
+/* VOIZON digital studio scrolling banner */
+.voizon-studio-marquee{padding:17px 0;background:linear-gradient(105deg,#06152d 0%,#0b2d57 48%,#075da7 100%);border-top:1px solid rgba(93,190,255,.65);border-bottom:1px solid rgba(93,190,255,.65)}
+.voizon-studio-marquee .diwali-marquee-track{gap:48px;font-size:13px;letter-spacing:.65px;animation-duration:46s}
+.voizon-studio-marquee .diwali-marquee-track span{display:inline-flex;align-items:center;gap:11px;padding:8px 16px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.075);box-shadow:inset 0 1px rgba(255,255,255,.08)}
+.voizon-studio-marquee .studio-mark{font-size:19px;font-weight:500;font-style:normal}
+@media(max-width:520px){.voizon-studio-marquee{padding:11px 0}.voizon-studio-marquee .diwali-marquee-track{font-size:11px;gap:24px;animation-duration:38s}.voizon-studio-marquee .diwali-marquee-track span{padding:7px 12px}}
