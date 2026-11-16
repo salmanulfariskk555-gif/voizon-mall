@@ -60,3 +60,19 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
 
 /* Load the Ask VOIZON assistant on every page */
 (()=>{const s=document.createElement('script');s.src='/assets/js/ask-voizon.js';s.defer=true;document.body.appendChild(s);})();
+
+/* Page-specific illustrations for service and company pages */
+(function(){
+ const illustrations={
+  "seo":"digital-marketing","google-ads":"digital-marketing","meta-ads":"digital-marketing","paid-advertising":"digital-marketing","social-media":"digital-marketing","content-marketing":"digital-marketing","lead-generation":"digital-marketing","email-marketing":"digital-marketing","analytics-reporting":"digital-marketing","digital-strategy":"digital-marketing",
+  "branding-design":"brand-creative","logo-brand-identity":"brand-creative","graphic-design":"brand-creative","print-design":"brand-creative","presentation-design":"brand-creative","video-editing":"brand-creative",
+  "web-development":"web-technology","ecommerce-development":"web-technology","web-applications":"web-technology","wordpress-development":"web-technology","ui-ux-design":"web-technology","website-maintenance":"web-technology",
+  "it-consulting":"consulting-automation","business-automation":"consulting-automation"
+ };
+ const slug=location.pathname.split('/').filter(Boolean).pop()||'index';
+ const asset=illustrations[slug];if(!asset)return;
+ const hero=document.querySelector('main .pagehero');if(!hero||hero.querySelector('.pagehero-illustration'))return;
+ const wrap=document.createElement('div');wrap.className='pagehero-illustration';
+ const img=document.createElement('img');img.src='/assets/images/services/'+asset+'.svg';img.alt=slug.replaceAll('-',' ')+' service illustration';img.loading='lazy';img.decoding='async';
+ wrap.appendChild(img);hero.appendChild(wrap);
+})();
