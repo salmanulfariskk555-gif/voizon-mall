@@ -48,7 +48,7 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  "website-maintenance":{name:"Website care & maintenance",tag:"WEBSITE MAINTENANCE",intro:"Keep your website reviewed and supported through agreed maintenance tasks and ongoing checks.",items:[["Routine updates","Plan updates for the website platform, themes and supported plugins."],["Health checks","Review forms, links, backups and key site functions where access allows."],["Content changes","Handle agreed text, image and page updates within the support scope."]]},
  "digital-strategy":{name:"Digital growth planning",tag:"DIGITAL STRATEGY",intro:"Bring channels, content, technology and business priorities into one practical digital roadmap.",items:[["Business & audience","Clarify goals, customer segments and the current digital position."],["Channel priorities","Select suitable marketing and technology activities for the objective."],["Roadmap & review","Set priorities, responsibilities and measures for ongoing review."]]}
  };
- const slug=location.pathname.split("/").pop()||"index";
+ const slug=location.pathname.split("/").filter(Boolean).pop()?.replace(/\.html$/,"")||"index";
  const data=pages[slug]; if(!data)return;
  const main=document.querySelector("main"); const hero=main?.querySelector(".pagehero"); if(!main||!hero)return;
  const section=document.createElement("section"); section.className="section service-intro";
@@ -66,7 +66,7 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
   "about":"about","services":"services","solutions":"solutions","industries":"industries","faq":"faq","process":"process","contact":"contact",
   "portfolio":"creative-work","blog":"creative-work","international":"global-partnership"
  };
- const slug=location.pathname.split('/').filter(Boolean).pop()||'index';
+ const slug=location.pathname.split('/').filter(Boolean).pop()?.replace(/\.html$/,'')||'index';
  const asset=illustrations[slug];if(!asset)return;
  const hero=document.querySelector('main .pagehero');if(!hero||hero.querySelector('.pagehero-illustration'))return;
  const wrap=document.createElement('div');wrap.className='pagehero-illustration';
