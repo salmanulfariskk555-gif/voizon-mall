@@ -4,22 +4,45 @@ if(!document.querySelector('link[rel="icon"]')){const icon=document.createElemen
 const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();const m=document.querySelector('.menu'),n=document.querySelector('nav');if(m&&n)m.addEventListener('click',()=>{const open=n.classList.toggle('open');m.setAttribute('aria-expanded',String(open));});const f=document.getElementById('enquiry');if(f)f.addEventListener('submit',e=>{e.preventDefault();const d=new FormData(f);const lines=['Hello VOIZON, I would like to enquire.','Name: '+d.get('name'),'Business: '+(d.get('business')||'Not provided') ,'Email: '+(d.get('email')||'Not provided'),'Phone: '+(d.get('phone')||'Not provided'),'Country / market: '+(d.get('country')||'Not provided'),'Website / profile: '+(d.get('website')||'Not provided'),'Preferred contact: '+(d.get('preferred')||'Not specified'),'Service: '+d.get('service'),'Budget / currency: '+(d.get('budget')||'Not decided'),'Expected timeline: '+(d.get('timeline')||'Not specified'),'Details: '+d.get('message')];const url='https://wa.me/919567497943?text='+encodeURIComponent(lines.join('\n'));window.open(url,'_blank','noopener');});
 const params=new URLSearchParams(window.location.search);const serviceParam=params.get('service');const serviceSelect=document.querySelector('#enquiry select[name="service"]');if(serviceParam&&serviceSelect){const match=[...serviceSelect.options].find(o=>o.text.toLowerCase()===serviceParam.toLowerCase());if(match)serviceSelect.value=match.value;else{const opt=document.createElement('option');opt.textContent=serviceParam;opt.value=serviceParam;opt.selected=true;serviceSelect.insertBefore(opt,serviceSelect.firstChild);}}
 
-/* Persistent enquiry options: available on every website page */
+/* VOIZON mini chatbot */
 (function(){
- const path=window.location.pathname.split('/').filter(Boolean).pop()||'index';
- const pageTitle=(document.querySelector('main .pagehero h1')?.innerText||document.title.split('|')[0]).replace(/\s+/g,' ').trim();
- const isService=/seo|ads|social-media|marketing|lead-generation|email|analytics|branding|design|video|presentation|web-development|ecommerce|web-applications|wordpress|ui-ux|it-consulting|automation|maintenance|strategy/i.test(path);
- const subject=isService?pageTitle:'a project';
- const box=document.createElement('div');
- box.className='floating-contact';
- box.setAttribute('aria-label','Contact VOIZON');
- const waText='Hello VOIZON, I have a question about your digital services. Could you please assist me?';
- const wa='https://wa.me/919567497943?text='+encodeURIComponent(waText);
- const contact='/contact/'+(isService?'?service='+encodeURIComponent(subject):'');
- box.innerHTML='<a class="contact-float" href="'+contact+'"><span class="float-icon">✉</span><span>Contact Us</span></a><a class="whatsapp-float" href="'+wa+'" target="_blank" rel="noopener noreferrer"><span class="float-icon">◉</span><span>Ask VOIZON</span></a>';
- document.body.appendChild(box);
+ if(document.querySelector('.voizon-chat-launcher')) return;
+ const wrap=document.createElement('div');
+ wrap.className='voizon-chat';
+ wrap.innerHTML='<button class="voizon-chat-launcher" type="button" aria-label="Open Ask VOIZON chat"><span aria-hidden="true">✦</span> Ask VOIZON</button>'+
+ '<section class="voizon-chat-panel" role="dialog" aria-label="Ask VOIZON assistant" aria-modal="false" hidden>'+
+ '<header class="voizon-chat-head"><div><strong>Ask VOIZON</strong><small>Website assistant · Instant answers</small></div><button type="button" class="voizon-chat-close" aria-label="Close chat">×</button></header>'+
+ '<div class="voizon-chat-messages" aria-live="polite"><div class="voizon-msg bot">Hi! 👋 Welcome to VOIZON. How can I help you today?</div></div>'+
+ '<div class="voizon-chat-quick"><button type="button" data-question="What services do you offer?">Our services</button><button type="button" data-question="How much do your services cost?">Pricing</button><button type="button" data-question="Tell me about your courses">Courses</button><button type="button" data-question="How can I contact your team?">Contact team</button></div>'+
+ '<form class="voizon-chat-form"><input aria-label="Type your message" placeholder="Type your question..." autocomplete="off" required><button type="submit" aria-label="Send message">➤</button></form>'+
+ '<div class="voizon-chat-foot">Automated assistant · For detailed help, WhatsApp our team</div></section>';
+ document.body.appendChild(wrap);
+ const panel=wrap.querySelector('.voizon-chat-panel'),launcher=wrap.querySelector('.voizon-chat-launcher'),messages=wrap.querySelector('.voizon-chat-messages'),form=wrap.querySelector('form'),input=form.querySelector('input');
+ function openChat(){panel.hidden=false;launcher.hidden=true;input.focus();}
+ function closeChat(){panel.hidden=true;launcher.hidden=false;launcher.focus();}
+ function addMessage(text,who){const node=document.createElement('div');node.className='voizon-msg '+who;node.textContent=text;messages.appendChild(node);messages.scrollTop=messages.scrollHeight;}
+ function reply(q){
+  const s=q.toLowerCase();
+  if(/price|pricing|cost|rate|charge|budget|how much/.test(s)) return 'Pricing depends on your project scope, features and requirements. Tell us what you need and our team can prepare a suitable quotation.';
+  if(/course|training|learn|student|academy|class/.test(s)) return 'VOIZON offers learning and training opportunities in technology and digital skills. Tell us which subject or course you are interested in, and our team can share the available details.';
+  if(/web|website|development|ecommerce|shop|lms|portal/.test(s)) return 'We provide website and web application development, including business websites and tailored digital platforms. Share your project idea and required features so we can guide you.';
+  if(/seo|marketing|social|instagram|facebook|ads|advertis|branding|content/.test(s)) return 'We support businesses with digital marketing, SEO, paid advertising, social media and creative services. Tell us your business goal and we can suggest a suitable approach.';
+  if(/cyber|security|audit|protect|hacking/.test(s)) return 'We provide cybersecurity-related services and guidance. Share whether you need a security review, website security support or training.';
+  if(/contact|phone|whatsapp|talk|team|human|person|call/.test(s)) return 'You can contact the VOIZON team on WhatsApp at +91 95674 97943. Tap below to start a conversation.';
+  if(/hello|hi|hey|good morning|good evening/.test(s)) return 'Hello! 😊 Are you looking for a website, digital marketing, cybersecurity support or a course?';
+  return 'Thanks for your question! I may not have that detail yet. Please share a little more, or contact our team directly on WhatsApp.';
+ }
+ function ask(q){
+  if(!q.trim())return;addMessage(q,'user');const answer=reply(q);
+  window.setTimeout(()=>addMessage(answer,'bot'),220);
+  if(/contact|whatsapp|team|human|person|call/.test(q.toLowerCase())){
+   const link=document.createElement('a');link.className='voizon-chat-wa';link.href='https://wa.me/919567497943?text='+encodeURIComponent('Hello VOIZON, I need assistance.');link.target='_blank';link.rel='noopener noreferrer';link.textContent='Chat with our team on WhatsApp';messages.appendChild(link);
+  }
+ }
+ launcher.addEventListener('click',openChat);wrap.querySelector('.voizon-chat-close').addEventListener('click',closeChat);
+ wrap.querySelectorAll('[data-question]').forEach(b=>b.addEventListener('click',()=>ask(b.dataset.question)));
+ form.addEventListener('submit',e=>{e.preventDefault();const q=input.value;input.value='';ask(q);});
 })();
-
 
 /* Service-page enhancements: tailored capability panels and direct enquiry paths */
 (function(){
