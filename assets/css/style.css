@@ -431,3 +431,11 @@ footer a.logo img{width:235px;max-height:64px}
 /* Ensure the direct-call icon remains clearly visible on mobile */
 .voizon-contact-actions .voizon-call{display:flex!important;visibility:visible!important;opacity:1!important;background:#0878e8!important;color:#fff!important;font-size:23px!important;line-height:1!important;min-width:48px;min-height:48px}
 @media(max-width:520px){.voizon-contact-actions .voizon-call{display:flex!important;min-width:46px;min-height:46px;font-size:22px!important}}
+
+/* Accessibility and usability polish shared across the site */
+:where(a,button,input,select,textarea):focus-visible{outline:3px solid #43b9ff;outline-offset:3px}
+header nav a[aria-current="page"]{color:var(--blue)}
+header nav a{transition:color .18s ease}
+.menu{cursor:pointer;min-width:44px;min-height:44px;border-radius:8px}
+@media(max-width:760px){.header nav{max-height:calc(100vh - 76px);overflow-y:auto;overscroll-behavior:contain}.header nav a{padding:7px 0;font-size:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
