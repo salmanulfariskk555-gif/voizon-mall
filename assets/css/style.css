@@ -368,3 +368,26 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 .values article h3 a{color:inherit}
 .values article h3 a:hover{color:#0878e8}
 @media(max-width:700px){.insight-article{padding:0 5vw}.article-heading{padding:20px 0 28px}.article-deck,.article-lead{font-size:17px}.article-section h2{font-size:20px}.article-section p{font-size:15px}}
+
+/* VOIZON brand mark: restrained entrance and interactive polish */
+.header .logo img{
+  display:block;
+  width:190px;
+  height:auto;
+  transform-origin:left center;
+  animation:voizonLogoReveal .9s cubic-bezier(.2,.75,.25,1) both;
+  transition:transform .28s ease,filter .28s ease;
+}
+.header .logo:hover img,.header .logo:focus-visible img{
+  transform:translateY(-1px) scale(1.018);
+  filter:drop-shadow(0 5px 10px rgba(8,120,220,.18));
+}
+@keyframes voizonLogoReveal{
+  0%{opacity:0;transform:translate3d(-12px,5px,0) scale(.975);filter:blur(2px)}
+  65%{opacity:1;filter:blur(0)}
+  100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:drop-shadow(0 2px 5px rgba(8,120,220,.10))}
+}
+@media(prefers-reduced-motion:reduce){
+  .header .logo img{animation:none;transition:none}
+  .header .logo:hover img,.header .logo:focus-visible img{transform:none;filter:none}
+}
