@@ -61,3 +61,8 @@
 @media(max-width:900px){.hero{min-height:0;grid-template-columns:1fr  .8fr;padding:66px 5vw}.hero-art img{max-width:100%;height:auto}}
 @media(max-width:700px){.hero{grid-template-columns:1fr;padding:54px 22px 48px;text-align:left}.hero h1{font-size:clamp(38px,10vw,52px)}.hero-art{margin-top:24px}.voizon-image-slider{height:270px}.voizon-banner-cta{padding:16px 14px}.voizon-banner-cta .actions{width:100%;gap:10px}.voizon-banner-cta .btn{min-width:0;flex:1;padding:13px 10px;font-size:12px}}
 @media(max-width:380px){.voizon-banner-cta .actions{flex-direction:column}.voizon-banner-cta .btn{width:100%}}
+
+/* The banner CTA sits on a light surface, so the outlined action needs dark text */
+.voizon-banner-cta .btn.outline{color:#102b55!important;background:#fff;border:1px solid #9aacc2}
+.voizon-banner-cta .btn.outline:hover{color:#0878e8!important;background:#f4f8fd;border-color:#0878e8}
+.voizon-banner-cta .btn.primary{color:#fff!important}
