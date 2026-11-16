@@ -64,7 +64,7 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
 (function(){
  const illustrations={
   "about":"about","services":"services","solutions":"solutions","industries":"industries","faq":"faq","process":"process","contact":"contact",
-  "portfolio":"creative-work","blog":"creative-work","international":"global-partnership"
+  "portfolio":"portfolio","blog":"blog","international":"global-partnership"
  };
  const slug=location.pathname.split('/').filter(Boolean).pop()?.replace(/\.html$/,'')||'index';
  const asset=illustrations[slug];if(!asset)return;
