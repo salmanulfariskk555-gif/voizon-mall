@@ -137,3 +137,32 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  const img=document.createElement('img');img.src='/assets/images/pages/'+asset+'.svg';img.alt=slug.replaceAll('-',' ')+' illustration';img.loading='lazy';img.decoding='async';
  wrap.appendChild(img);hero.appendChild(wrap);
 })();
+
+/* Search and topic filter for the VOIZON insights library */
+(function(){
+ const search=document.getElementById('insight-search');
+ const category=document.getElementById('insight-category');
+ const cards=[...document.querySelectorAll('.insight-card')];
+ if(!search||!category||!cards.length)return;
+ const count=document.getElementById('insights-count');
+ const empty=document.getElementById('insights-empty');
+ const apply=()=>{
+  const q=search.value.trim().toLowerCase();
+  const cat=category.value.toLowerCase();
+  let visible=0;
+  cards.forEach(card=>{
+   const text=card.textContent.toLowerCase();
+   const matchesText=!q||text.includes(q);
+   const value=card.dataset.category||'';
+   const matchesCategory=cat==='all'||value===cat||((cat==='seo')&&value==='local seo');
+   const show=matchesText&&matchesCategory;
+   card.hidden=!show;
+   if(show)visible++;
+  });
+  if(count)count.textContent=visible+' of '+cards.length+' practical guides';
+  if(empty)empty.hidden=visible!==0;
+ };
+ search.addEventListener('input',apply);
+ category.addEventListener('change',apply);
+ apply();
+})();
