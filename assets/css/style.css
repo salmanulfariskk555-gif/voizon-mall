@@ -349,3 +349,22 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
 .portfolio-tags span{padding:7px 10px;border-radius:20px;background:#f0f6fc;color:#315575;font-size:11px;font-weight:700}
 @media(max-width:760px){.portfolio-showcase{grid-template-columns:1fr;gap:18px}.portfolio-card-copy{padding:19px}.portfolio-card-copy h3{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.portfolio-card{transition:none}.portfolio-card:hover{transform:none}}
+
+
+/* Long-form educational insight articles */
+.insight-article{max-width:100%;padding:0 6vw}
+.article-breadcrumb{max-width:900px;margin:30px auto 20px;color:#718198;font-size:12px}
+.article-breadcrumb a{color:#0878e8;font-weight:700}
+.article-heading{max-width:900px;margin:0 auto;padding:28px 0 38px}
+.article-heading h1{font:800 clamp(32px,5vw,54px)/1.13 Manrope;color:#102b55;letter-spacing:-1.5px;margin:14px 0}
+.article-deck{font-size:19px;line-height:1.7;color:#5f7087;max-width:780px}
+.article-meta{font-size:12px;color:#8290a2;margin-top:22px}
+.article-body{max-width:780px;margin:0 auto 64px}
+.article-lead{font-size:19px;line-height:1.85;color:#344b66;font-weight:500;margin-bottom:36px}
+.article-section{padding:22px 0;border-top:1px solid #e5ebf2}
+.article-section h2{font:800 23px/1.3 Manrope;color:#102b55;margin:0 0 12px}
+.article-section p{font-size:16px;line-height:1.9;color:#53667e;margin:0}
+.article-section a{color:#0878e8;text-decoration:underline}
+.values article h3 a{color:inherit}
+.values article h3 a:hover{color:#0878e8}
+@media(max-width:700px){.insight-article{padding:0 5vw}.article-heading{padding:20px 0 28px}.article-deck,.article-lead{font-size:17px}.article-section h2{font-size:20px}.article-section p{font-size:15px}}
