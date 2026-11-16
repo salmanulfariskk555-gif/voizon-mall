@@ -43,3 +43,8 @@
 .voizon-banner-action.is-call{background:#0878e8;color:#fff}
 .voizon-banner-action span{font-size:17px;line-height:1}
 @media(max-width:520px){.voizon-banner-actions{gap:9px;padding:13px 12px}.voizon-banner-action{min-width:0;flex:1;padding:11px 12px;font-size:12px}}
+
+/* Homepage primary actions placed immediately below the image slider */
+.voizon-banner-cta{display:flex;justify-content:center;align-items:center;padding:20px 24px;background:#f4f8fd;border-bottom:1px solid #e4edf7}
+.voizon-banner-cta .actions{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;margin:0}
+@media(max-width:520px){.voizon-banner-cta{padding:14px 12px}.voizon-banner-cta .actions{width:100%;gap:9px}.voizon-banner-cta .actions .btn{flex:1;text-align:center;padding:13px 10px;font-size:11px;white-space:normal}}
