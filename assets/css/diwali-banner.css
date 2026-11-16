@@ -34,3 +34,12 @@
 .voizon-slider-dots button.is-active{width:25px;background:#fff}
 @media(max-width:700px){.voizon-image-slider{height:270px}.voizon-slide img{object-position:center}.voizon-slide-caption{left:20px;bottom:62px;max-width:85vw}.voizon-slide-caption span{font-size:9px;letter-spacing:1.4px;margin-bottom:8px}.voizon-slide-caption h2{font-size:clamp(25px,7vw,36px);letter-spacing:-.8px}.voizon-slider-controls{right:18px;bottom:14px;gap:9px}.voizon-slider-controls>button{width:31px;height:31px;font-size:21px}}
 @media(prefers-reduced-motion:reduce){.voizon-slide{transition:none}}
+
+/* Quick contact buttons directly beneath the homepage image banner */
+.voizon-banner-actions{display:flex;justify-content:center;align-items:center;gap:14px;padding:18px 20px;background:#f4f8fd;border-bottom:1px solid #e4edf7}
+.voizon-banner-action{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:154px;padding:12px 22px;border-radius:999px;text-decoration:none;font:700 13px 'DM Sans',sans-serif;box-shadow:0 6px 18px rgba(7,26,56,.12);transition:transform .2s,box-shadow .2s}
+.voizon-banner-action:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(7,26,56,.18)}
+.voizon-banner-action.is-whatsapp{background:#168b58;color:#fff}
+.voizon-banner-action.is-call{background:#0878e8;color:#fff}
+.voizon-banner-action span{font-size:17px;line-height:1}
+@media(max-width:520px){.voizon-banner-actions{gap:9px;padding:13px 12px}.voizon-banner-action{min-width:0;flex:1;padding:11px 12px;font-size:12px}}
