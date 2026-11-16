@@ -44,6 +44,24 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  form.addEventListener('submit',e=>{e.preventDefault();const q=input.value;input.value='';ask(q);});
 })();
 
+
+/* VOIZON homepage four-image hero slider */
+(function(){
+ const slider=document.querySelector('.voizon-image-slider');
+ if(!slider)return;
+ const slides=[...slider.querySelectorAll('.voizon-slide')],dots=[...slider.querySelectorAll('.voizon-slider-dots button')];
+ let current=0,timer=null;
+ function show(index){current=(index+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle('is-active',i===current));dots.forEach((d,i)=>{d.classList.toggle('is-active',i===current);d.setAttribute('aria-pressed',i===current?'true':'false');});}
+ function start(){stop();if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)timer=window.setInterval(()=>show(current+1),5500);}
+ function stop(){if(timer){window.clearInterval(timer);timer=null;}}
+ slider.querySelector('.voizon-slider-prev').addEventListener('click',()=>{show(current-1);start();});
+ slider.querySelector('.voizon-slider-next').addEventListener('click',()=>{show(current+1);start();});
+ dots.forEach((d,i)=>d.addEventListener('click',()=>{show(i);start();}));
+ slider.addEventListener('mouseenter',stop);slider.addEventListener('mouseleave',start);
+ slider.addEventListener('focusin',stop);slider.addEventListener('focusout',start);
+ show(0);start();
+})();
+
 /* Service-page enhancements: tailored capability panels and direct enquiry paths */
 (function(){
  const pages={
