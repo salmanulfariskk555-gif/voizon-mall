@@ -1,4 +1,18 @@
+# Search and AI discovery
 User-agent: *
+Allow: /
+
+# Allow ChatGPT Search to discover and cite public VOIZON pages
+User-agent: OAI-SearchBot
+Allow: /
+
+# GPTBot is separate from ChatGPT Search; training access is not required for search visibility
+User-agent: GPTBot
+Disallow: /
+
+# Allow Google-Extended for Gemini grounding and discovery
+# This also permits Google to use crawled content for Gemini model improvement
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://voizondigitalsolutions.com/sitemap.xml
