@@ -10,10 +10,8 @@ Allow: /
 User-agent: GPTBot
 Disallow: /
 
-# Google Search and its AI Overviews / AI Mode use Googlebot
-# Gemini Apps grounding is controlled separately by Google-Extended.
-# Leave Google-Extended disallowed unless VOIZON explicitly opts in.
+# Owner-approved: allow Gemini Apps grounding and Google model improvement/training
 User-agent: Google-Extended
-Disallow: /
+Allow: /
 
 Sitemap: https://voizondigitalsolutions.com/sitemap.xml
