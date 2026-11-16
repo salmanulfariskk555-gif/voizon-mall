@@ -465,3 +465,27 @@ header nav a{transition:color .18s ease}
 .site-breadcrumb a:hover{text-decoration:underline}
 .site-breadcrumb [aria-current="page"]{color:#243b5b;font-weight:700}
 @media(max-width:700px){.site-breadcrumb{padding:11px 22px;font-size:11px}}
+
+/* VOIZON Insights library */
+.insights-library{background:#f5f8fc}
+.insights-intro{max-width:760px;margin:0 auto 38px;text-align:center}
+.insights-intro h2{font-size:clamp(30px,4vw,46px);line-height:1.15;color:var(--navy);margin:0 0 14px}
+.insights-intro>p:last-child{font-size:15px;line-height:1.8;color:var(--muted)}
+.insights-tools{display:flex;gap:12px;max-width:760px;margin:0 auto 18px}
+.insights-tools input,.insights-tools select{min-height:48px;border:1px solid #d5dfeb;border-radius:8px;background:#fff;padding:0 15px;color:var(--ink);font:500 14px 'DM Sans',sans-serif}
+.insights-tools input{flex:1;min-width:0}
+.insights-tools select{width:220px}
+.insights-tools input:focus,.insights-tools select:focus{outline:3px solid #43b9ff55;border-color:#0878e8}
+.insights-count{max-width:1180px;margin:0 auto 16px;color:#718198;font-size:12px}
+.insights-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1180px;margin:0 auto}
+.insight-card{display:flex;flex-direction:column;align-items:flex-start;min-height:290px;padding:26px;background:#fff;border:1px solid #e0e8f2;border-radius:12px;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.insight-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(8,30,60,.08);border-color:#a9d4fa}
+.insight-card .eyebrow{font-size:9px;margin:0 0 15px}
+.insight-card h2{font-size:20px;line-height:1.35;letter-spacing:-.45px;margin:0 0 12px;color:var(--navy)}
+.insight-card h2 a:hover{color:var(--blue)}
+.insight-card>p:not(.eyebrow){font-size:13px;line-height:1.75;color:var(--muted);margin:0 0 22px}
+.insight-card .link{margin-top:auto}
+.insights-empty{text-align:center;color:var(--muted);padding:35px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:900px){.insights-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.insights-grid{grid-template-columns:1fr}.insight-card{min-height:0;padding:22px}.insights-tools{flex-direction:column}.insights-tools select{width:100%}.insights-library{padding:60px 20px}}
