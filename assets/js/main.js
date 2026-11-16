@@ -52,30 +52,24 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  const data=pages[slug]; if(!data)return;
  const main=document.querySelector("main"); const hero=main?.querySelector(".pagehero"); if(!main||!hero)return;
  const section=document.createElement("section"); section.className="section service-intro";
- section.innerHTML='<div class="service-showcase"><div class="service-showcase-copy"><p class="eyebrow blue">VOIZON SERVICE FRAMEWORK / '+data.tag+'</p><h2>'+data.name+'</h2><p>'+data.intro+'</p><a class="btn primary" href="/contact/?service='+encodeURIComponent(data.tag)+'">Discuss this service ↗</a></div><div class="service-visual" aria-hidden="true"><div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div><div class="visual-core"><span>V</span><small>VOIZON<br>DIGITAL</small></div><div class="visual-chip chip-a">STRATEGY</div><div class="visual-chip chip-b">CREATIVE</div><div class="visual-chip chip-c">DELIVERY</div></div></div><div class="service-grid service-capabilities">'+data.items.map((item,i)=>'<div><span class="cap-number">0'+(i+1)+'</span><h3>'+item[0]+'</h3><p>'+item[1]+'</p></div>').join("")+'</div>';
+ section.innerHTML='<div class="service-showcase"><div class="service-showcase-copy"><p class="eyebrow blue">VOIZON SERVICE FRAMEWORK / '+data.tag+'</p><h2>'+data.name+'</h2><p>'+data.intro+'</p><a class="btn primary" href="/contact/?service='+encodeURIComponent(data.tag)+'">Discuss this service ↗</a></div><div class="service-visual"><img src="/assets/images/services/'+slug+'.svg" alt="'+data.name+' illustration" loading="lazy" decoding="async"></div></div><div class="service-grid service-capabilities">'+data.items.map((item,i)=>'<div><span class="cap-number">0'+(i+1)+'</span><h3>'+item[0]+'</h3><p>'+item[1]+'</p></div>').join("")+'</div>';
  hero.insertAdjacentElement("afterend",section);
  const list=main.querySelector(".service-list");
- if(list){const next=document.createElement("div");next.className="service-next-step";next.innerHTML='<div><p class="eyebrow">YOUR REQUIREMENT, YOUR SCOPE</p><h2>Let’s shape the right approach.</h2><p>Share your business, goals and requirements. We can discuss the suitable scope, deliverables and next steps before moving ahead.</p></div><a class="btn primary" href="contact.html?service='+encodeURIComponent(data.tag)+'">Send an enquiry ↗</a>';list.insertAdjacentElement("afterend",next);}
+ if(list){const next=document.createElement("div");next.className="service-next-step";next.innerHTML='<div><p class="eyebrow">YOUR REQUIREMENT, YOUR SCOPE</p><h2>Let’s shape the right approach.</h2><p>Share your business, goals and requirements. We can discuss the suitable scope, deliverables and next steps before moving ahead.</p></div><a class="btn primary" href="/contact/?service='+encodeURIComponent(data.tag)+'">Send an enquiry ↗</a>';list.insertAdjacentElement("afterend",next);}
 })();
 
-/* Load the Ask VOIZON assistant on every page */
-(()=>{const s=document.createElement('script');s.src='/assets/js/ask-voizon.js';s.defer=true;document.body.appendChild(s);})();
+/* Ask VOIZON chatbot intentionally disabled until its backend is configured. */
 
-/* Page-specific illustrations for service and company pages */
+/* Page-specific illustrations for company pages. Service pages use their own unique artwork in the service framework panel. */
 (function(){
  const illustrations={
-  "about":"pages/business-solutions","services":"pages/business-solutions","solutions":"pages/business-solutions","industries":"pages/business-solutions","faq":"pages/business-solutions","process":"pages/business-solutions","contact":"pages/business-solutions",
-  "portfolio":"pages/creative-work","blog":"pages/creative-work",
-  "international":"pages/global-partnership",
-  "seo":"services/digital-marketing","google-ads":"services/digital-marketing","meta-ads":"services/digital-marketing","paid-advertising":"services/digital-marketing","social-media":"services/digital-marketing","content-marketing":"services/digital-marketing","lead-generation":"services/digital-marketing","email-marketing":"services/digital-marketing","analytics-reporting":"services/digital-marketing","digital-strategy":"services/digital-marketing",
-  "branding-design":"services/brand-creative","logo-brand-identity":"services/brand-creative","graphic-design":"services/brand-creative","print-design":"services/brand-creative","presentation-design":"services/brand-creative","video-editing":"services/brand-creative",
-  "web-development":"services/web-technology","ecommerce-development":"services/web-technology","web-applications":"services/web-technology","wordpress-development":"services/web-technology","ui-ux-design":"services/web-technology","website-maintenance":"services/web-technology",
-  "it-consulting":"services/consulting-automation","business-automation":"services/consulting-automation"
+  "about":"business-solutions","services":"business-solutions","solutions":"business-solutions","industries":"business-solutions","faq":"business-solutions","process":"business-solutions","contact":"business-solutions",
+  "portfolio":"creative-work","blog":"creative-work","international":"global-partnership"
  };
  const slug=location.pathname.split('/').filter(Boolean).pop()||'index';
  const asset=illustrations[slug];if(!asset)return;
  const hero=document.querySelector('main .pagehero');if(!hero||hero.querySelector('.pagehero-illustration'))return;
  const wrap=document.createElement('div');wrap.className='pagehero-illustration';
- const img=document.createElement('img');img.src='/assets/images/'+asset+'.svg';img.alt=slug.replaceAll('-',' ')+' service illustration';img.loading='lazy';img.decoding='async';
+ const img=document.createElement('img');img.src='/assets/images/pages/'+asset+'.svg';img.alt=slug.replaceAll('-',' ')+' illustration';img.loading='lazy';img.decoding='async';
  wrap.appendChild(img);hero.appendChild(wrap);
 })();
