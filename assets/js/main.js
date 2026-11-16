@@ -13,10 +13,10 @@ const params=new URLSearchParams(window.location.search);const serviceParam=para
  const box=document.createElement('div');
  box.className='floating-contact';
  box.setAttribute('aria-label','Contact VOIZON');
- const waText='Hello VOIZON, I would like to discuss '+subject+'. Please share the next steps.';
+ const waText='Hello VOIZON, I have a question about your digital services. Could you please assist me?';
  const wa='https://wa.me/919567497943?text='+encodeURIComponent(waText);
  const contact='/contact/'+(isService?'?service='+encodeURIComponent(subject):'');
- box.innerHTML='<a class="contact-float" href="'+contact+'"><span class="float-icon">✉</span><span>Contact Us</span></a><a class="whatsapp-float" href="'+wa+'" target="_blank" rel="noopener noreferrer"><span class="float-icon">◉</span><span>WhatsApp Us</span></a>';
+ box.innerHTML='<a class="contact-float" href="'+contact+'"><span class="float-icon">✉</span><span>Contact Us</span></a><a class="whatsapp-float" href="'+wa+'" target="_blank" rel="noopener noreferrer"><span class="float-icon">◉</span><span>Ask VOIZON</span></a>';
  document.body.appendChild(box);
 })();
 
