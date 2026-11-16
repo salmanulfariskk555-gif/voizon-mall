@@ -419,3 +419,11 @@ input:focus,select:focus,textarea:focus{border-color:#58a9f3;box-shadow:0 0 0 3p
   .header .logo img{animation:none;transition:none}
   .header .logo:hover img,.header .logo:focus-visible img{transform:none;filter:none}
 }
+
+/* Final logo sizing: clearer brand visibility across desktop and mobile */
+.header a.logo img{width:clamp(220px,20vw,270px);max-height:70px;height:auto;object-fit:contain}
+footer a.logo img{width:235px;max-height:64px}
+@media(max-width:1100px){.header a.logo img{width:220px;max-height:62px}}
+@media(max-width:850px){.header{height:76px}.header a.logo img{width:205px;max-height:58px}}
+@media(max-width:480px){.header{height:72px;padding-left:16px;padding-right:16px}.header a.logo img{width:190px;max-height:54px}}
+@media(max-width:360px){.header a.logo img{width:174px;max-height:50px}}
