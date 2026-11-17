@@ -612,3 +612,7 @@ form>*{min-width:0}
  #voizon-chat,#voizon-chat *{animation:none!important;transition:none!important}
  #voizon-chat .vz-service-flyer{opacity:0}
 }
+
+
+/* Typography safeguard: preserve natural word shapes while preventing overflow. */
+h1,h2,h3,h4,p,a,li,small,strong,span{overflow-wrap:break-word;word-break:normal;}
