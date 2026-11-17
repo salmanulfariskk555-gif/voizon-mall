@@ -580,3 +580,35 @@ form>*{min-width:0}
 @media(prefers-reduced-motion:reduce){
  .voizon-slide,.voizon-image-slider *{animation:none!important;transition:none!important}
 }
+
+
+/* Final fixed-position assistant control: prevent the animated mascot
+   from travelling across the viewport and covering page content. */
+#voizon-chat{
+ position:fixed!important;left:16px!important;right:auto!important;top:auto!important;
+ bottom:16px!important;width:190px!important;height:108px!important;
+ animation:none!important;transform:none!important;z-index:900!important;
+ pointer-events:none;
+}
+#voizon-chat .vz-chat-launch{
+ position:absolute!important;inset:0!important;width:190px!important;height:108px!important;
+ pointer-events:auto;
+}
+#voizon-chat .vz-mascot{width:76px!important;height:90px!important;left:0!important;top:8px!important}
+#voizon-chat .vz-sign-label{left:52px!important;top:38px!important;font-size:10px!important}
+#voizon-chat .vz-service-flyer{left:94px!important;top:22px!important;min-width:64px;padding:6px 7px;font-size:8px}
+#voizon-chat .vz-chat-panel{position:fixed!important;left:16px!important;right:auto!important;bottom:132px!important;width:min(365px,calc(100vw - 32px))!important;max-height:calc(100dvh - 160px)!important}
+#voizon-chat.vz-chat-open{pointer-events:auto}
+#voizon-chat.vz-chat-open .vz-chat-launch{pointer-events:auto}
+@media(max-width:600px){
+ #voizon-chat{left:8px!important;bottom:8px!important;width:142px!important;height:82px!important}
+ #voizon-chat .vz-chat-launch{width:142px!important;height:82px!important}
+ #voizon-chat .vz-mascot{width:64px!important;height:74px!important;top:4px!important}
+ #voizon-chat .vz-sign-label{left:42px!important;top:30px!important;font-size:9px!important;padding:4px 6px!important}
+ #voizon-chat .vz-service-flyer{left:76px!important;top:17px!important;min-width:54px;padding:5px 6px;font-size:7px}
+ #voizon-chat .vz-chat-panel{left:8px!important;bottom:98px!important;width:min(365px,calc(100vw - 16px))!important;max-height:calc(100dvh - 118px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ #voizon-chat,#voizon-chat *{animation:none!important;transition:none!important}
+ #voizon-chat .vz-service-flyer{opacity:0}
+}
